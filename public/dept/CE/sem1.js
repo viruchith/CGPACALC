@@ -39,3 +39,11 @@ console.log(cgpa);
 
 
 }
+
+function bigImg(x) {
+  x.style.fontSize = "23px";
+}
+
+function normalImg(x) {
+  x.style.fontSize = "20px";
+}

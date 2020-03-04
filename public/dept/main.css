@@ -1,0 +1,92 @@
+/*
+  Template Name: SoftLand
+  Template URL: https://bootstrapmade.com/softland-bootstrap-app-landing-page-template/
+  Author: BootstrapMade.com
+  Author URL: https://bootstrapmade.com/
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-image: linear-gradient(-108deg,#f7ce28,#1db7bf);
+  line-height: 1.5;
+}
+img{
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 8px;
+  width: 150px;
+  height: 150px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+  font-family: "Oxanium";
+  color: #000;
+  font
+  font-weight: bold;
+}
+#sem{
+  font-family: "Oxanium";
+  font-weight: 900;
+  font-style: italic;
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+
+}
+#sonalogo{
+  width: 150px;
+  height: 150px;
+  border:0;
+  border-radius:0;
+  padding: 5px;
+}
+#dept{
+  font-family: "Oxanium";
+  color:#FB931C;
+  font-weight: 900;
+  font-style: italic;
+  text-decoration: none;
+}
+
+.text-black {
+  color: #000 !important;
+}
+
+.text-primary {
+  color: #2d71a1 !important;
+}
+.main1{
+  background-image: linear-gradient(45deg,violet,blue);
+
+}
+.main2{
+  background-image: linear-gradient(90deg,violet,blue);
+
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
