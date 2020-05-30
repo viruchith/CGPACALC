@@ -13,14 +13,71 @@ html {
   overflow-x: hidden;
 }
 
+.title{
+  text-align: center;
+  font-size: x-large;
+  font-family: "Oxanium";
+  font-weight:600;
+  border: 5px solid rgb(222, 223, 222);
+  background-color: rgb(212, 216, 219);
+
+
+}
 body {
   font-family: "Roboto", sans-serif;
-  background-image: linear-gradient(-108deg,#f7ce28,#1db7bf);
   line-height: 1.5;
-  transition: ease;
+  background: linear-gradient(270deg, #edc60c, #2bd271);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 29s ease infinite;
+  -moz-animation: AnimationName 29s ease infinite;
+  animation: AnimationName 29s ease infinite;
 }
+
+ @-webkit-keyframes AnimationName {
+   0% {
+     background-position: 0% 50%
+   }
+
+   50% {
+     background-position: 100% 50%
+   }
+
+   100% {
+     background-position: 0% 50%
+   }
+ }
+
+ @-moz-keyframes AnimationName {
+   0% {
+     background-position: 0% 50%
+   }
+
+   50% {
+     background-position: 100% 50%
+   }
+
+   100% {
+     background-position: 0% 50%
+   }
+ }
+
+ @keyframes AnimationName {
+   0% {
+     background-position: 0% 50%
+   }
+
+   50% {
+     background-position: 100% 50%
+   }
+
+   100% {
+     background-position: 0% 50%
+   }
+ }
+
 img{
-  border: 1px solid #ddd;
+  border: 1px solid rgb(77, 77, 77);
   border-radius: 4px;
   padding: 5px;
   width: 150px;
@@ -33,11 +90,16 @@ h3,
 h4,
 h5,
 h6,
+
 .font-heading {
   font-family: "Oxanium";
   color: #000;
   font
   font-weight: bold;
+}
+
+.titlebox {
+  background-color: rgb(212, 216, 219);
 }
 #sonalogo{
   width: 150px;
@@ -52,6 +114,8 @@ h6,
   font-weight: 900;
   font-style: italic;
   text-decoration: none;
+  background-color: rgb(36, 36, 36);
+
 }
 
 .text-black {
