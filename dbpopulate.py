@@ -1,14 +1,15 @@
 import psycopg2
 from flask_bcrypt import Bcrypt
 import openpyxl as oxl
+from AppCredentials import Credentials as creds
 
 bcrypt=Bcrypt()
 
-connection = psycopg2.connect(user="postgres",
-                              password="toor",
+connection = psycopg2.connect(user=creds.DB_USERNAME,
+                              password=creds.DB_PASSWORD,
                               host="localhost",
                               port="5432",
-                              database="CSEApp")
+                              database=creds.DB_NAME)
 cursor=connection.cursor()
 xl=oxl.load_workbook("/Users/ganesankoundappan/Projects/CSEwebApp/<dasdasd>.xlsx")
 sh=xl.active
