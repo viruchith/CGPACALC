@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Info Edit </title>
+</head>
+<body>
+        <h1>First Name : {{personal["first_name"]}}</h1>
+        <br>
+        <h1>Last Name : {{personal["last_name"]}}</h1>
+        <br>
+       <h1> DOB : {{personal["DOB"]}}</h1>
+        <br>
+       <h1>Height(cm) : {{personal["height"]}}</h1>
+        <br>
+       <h1>Weight(kg) : {{personal["weight"]}}</h1>
+        <br>
+        <h1>Bloodgroup : {{personal["blood_group"]}}</h1>
+        <br>
+        <h1>Identification marks : {{personal["identification_marks"]}}</h1>
+        <br>
+        <h3>Communication Address : {{personal["communication_address"]}}</h3>
+        <br>
+        <h3>Permanent Address : {{personal["permanent_address"]}}</h3>
+        <br>
+        <h1>District : {{personal["district"]}}</h1>
+        <br>
+        <h1>State/Province : {{personal["state"]}}</h1>
+        <br>
+        <h1> Country : {{personal["country"]}}</h1>
+        <br>
+        <h1>Father / Guardian-1 Mob Num : {{personal["father_contact_number"]}}</h1>
+        <br>
+        <h1>Mother / Guardian-2 Mob num : {{personal["mother_contact_number"]}}</h1>
+        <br>
+        <h1>Your Mob num : {{personal["student_mobile_number"]}}</h1>
+        <br>
+        <h1>Known Languages : {{personal["languages"]}}</h1>
+        <br>
+        <h1><a href="{{url_for("personalInfoEdit",username=username)}}">EDIT</a></h1>
+</body>
+</html>
