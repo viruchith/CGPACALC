@@ -2,7 +2,7 @@ from flask import Flask,render_template,request,flash,session,redirect,url_for
 from flask_mail import Mail,Message
 #from xlrw import Xlrw
 from uservalidations import UserValidations
-from dbactions import fetchStudentDashboard,userExists,fetchUserByEmail
+from dbactions import fetchStudentDashboard,userExists,fetchUserByEmail,insertStudentPersonalInfo,updateStudentPersonalInfo
 
 
 
@@ -73,6 +73,48 @@ def studentDashboard(username):
             return "<h1>404 Page Not Found</h1>"
     else :
         return redirect(url_for("studentLogin"))
+
+
+@app.route("/<username>/personal_info")
+def personalInfoDisplay(username):
+    details=uv.studentPersonalInfoExist(username)
+    if "studentuser" in session and username==session["studentuser"]["admission_no"] and isinstance(details,dict) :
+        session["personal_info"]=details
+        return render_template("student_personal_info_display.html",username=username,personal=details)
+    elif "studentuser" in session and username == session["studentuser"]["admission_no"] and not details:
+        session["personal_info"] = {"admission_no": "", "first_name": "", "last_name": "", "DOB": "", "height": "", "weight": "", "blood_group": "", "identification_marks": "", "communication_address": "", "permanent_address": "","district": "", "state": "", "country": "", "pincode": "", "father_contact_number": "", "mother_contact_number": "", "student_mobile_number": "", "languages": "", "edit_permission": True}
+        return redirect(url_for("personalInfoEdit",username=username))
+    else:
+        return "<h1>The page you're looking for was not found </h1>"
+
+
+@app.route("/<username>/personal_info/edit",methods={'GET','POST'})
+def personalInfoEdit(username):
+    details = session["personal_info"]
+    if "studentuser" in session and username == session["studentuser"]["admission_no"] and details["edit_permission"]==True and details["admission_no"]=="":
+        if request.method=="POST" :
+            try:
+                insertStudentPersonalInfo({"admission_no": username, "first_name": request.form["first_name"], "last_name": request.form["last_name"], "DOB":request.form["dob"],"height":request.form["height"],"weight":request.form["weight"], "blood_group": request.form["blood_group"], "identification_marks": request.form["identification_marks"], "communication_address": request.form["communication_address"], "permanent_address": request.form["permanent_address"], "district": request.form["district"], "state": request.form["state"], "country": request.form["country"],"pincode":request.form["pincode"], "state": request.form["state"], "father_contact_number": request.form["fathermob"], "mother_contact_number": request.form["mothermob"], "student_mobile_number": request.form["studentmob"],"languages":request.form["languages"]})
+                flash("Details Submitted Successfully","success")
+                return redirect(url_for("studentDashboard",username=username))
+            except:
+                flash("Submission Error !","danger")
+        return render_template("student_personal_info_edit.html",personal=details)
+    elif "studentuser" in session and username == session["studentuser"]["admission_no"] and details["edit_permission"] == True and details["admission_no"] != "":
+        if request.method=='POST' :
+            try:
+                updateStudentPersonalInfo({"admission_no": username, "first_name": request.form["first_name"], "last_name": request.form["last_name"], "DOB":request.form["dob"],"height":request.form["height"],"weight":request.form["weight"], "blood_group": request.form["blood_group"], "identification_marks": request.form["identification_marks"], "communication_address": request.form["communication_address"], "permanent_address": request.form["permanent_address"], "district": request.form["district"], "state": request.form["state"], "country": request.form["country"],"pincode":request.form["pincode"], "state": request.form["state"], "father_contact_number": request.form["fathermob"], "mother_contact_number": request.form["mothermob"], "student_mobile_number": request.form["studentmob"],"languages":request.form["languages"]})
+                flash("Details updated successfullly !","success")
+                return redirect(url_for("studentDashboard",username=username))            
+            except:
+                flash("Submission Error !","danger")
+        return render_template("student_personal_info_edit.html",personal=details)
+        return render_template("student_personal_info_edit.html",personal=details)
+    elif "studentuser" not in session:
+        return redirect(url_for("studentLogin"))
+    else:
+        return "<h1>The page was not found</h1>"
+    
 
 @app.route("/<username>/ResetPassword",methods=['GET','POST'])
 def passwordReset(username):
