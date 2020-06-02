@@ -38,7 +38,7 @@ var gp8=grade(beeel.value);
 var cgpa=(4*(gp2+gp4)+3*(gp3+gp5+gp6)+(gp7+gp8)+(gp1*2))/21;
 console.log(gp1,gp2,gp3,gp4,gp5,gp6,gp7,gp8);
 console.log(cgpa);
- document.getElementById("result").innerHTML = "CGPA: "+cgpa.toFixed(2);
+ document.getElementById("result").innerHTML = "GPA : "+cgpa.toFixed(2);
 
 
 }

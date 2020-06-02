@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" href="../main.css">
-    <link href='https://fonts.googleapis.com/css?family=Oxanium' rel='stylesheet'>
     <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Computer Science and Engineering Semester-1</title>
+    <title>Electronics and Communication Engineering Semester-2</title>
     <center>
       <h3>
-        <div class="titlebox">Computer Science and Engineering Semester-1</div><br>Regulation-2019
+        <div class="titlebox">Electronics and Communication<br>Engineering Semester-2</div><br>Regulation-2019
       </h3>
     </center>
   </head>
+  <link rel="stylesheet" href="../main.css">
+  <link href='https://fonts.googleapis.com/css?family=Oxanium' rel='stylesheet'>
+  <script src="sem2.js">
+  </script>
   <hr>
   <body style="font-size:1.5em">
-    <script src="sem1.js">
-    </script>
     <ol type="1">
 
-    <center>  <li><label>English for Engineers - I :</label>
+    <center>  <li><label>English for Engineers - II</label>
       <center><select id="eng" style="">
         <option value="O" selected>O</option>
         <option value="A+">A+</option>
@@ -30,7 +30,7 @@
       <br>
       <br>
       <center><li>
-      <label>Linear Algebra and Calculus : </label>
+      <label>Transforms and Differential Equations : </label>
       <center><select id="mat" style="">
         <option value="O" selected>O</option>
         <option value="A+">A+</option>
@@ -42,7 +42,7 @@
       </li></center>
       <br>
       <br>
-      <center><li><label>Engineering Physics :</label>
+      <center><li><label>Physics for ECE  :</label>
       <center><select id="phy" style="">
         <option value="O" selected>O</option>
         <option value="A+">A+</option>
@@ -55,8 +55,8 @@
       <br>
       <br>
       <center><li>
-      <label>Applied Chemistry :</label>
-      <center><select id="chem" style="">
+      <label>Engineering Graphics :</label>
+      <center><select id="eg" style="">
         <option value="O" selected>O</option>
         <option value="A+">A+</option>
         <option value="A">A</option>
@@ -68,8 +68,8 @@
       <br>
       <br>
       <center><li>
-      <label>Problem Solving using<br>Python Programming :</label>
-      <center><select id="pyp" style="">
+      <label>Electronic Devices and Circuits  :</label>
+      <center><select id="edc" style="">
         <option value="O" selected>O</option>
         <option value="A+">A+</option>
         <option value="A">A</option>
@@ -81,8 +81,8 @@
       <br>
       <br>
       <center><li>
-      <label>Basic Electrical and<br>Electronics Engineering :</label>
-      <center><select id="beee" style="">
+      <label>Circuit Theory  :</label>
+      <center><select id="ct" style="">
         <option value="O" selected>O</option>
         <option value="A+">A+</option>
         <option value="A">A</option>
@@ -94,34 +94,21 @@
       <br>
       <br>
       <center><li>
-      <label>Physics and Chemistry Laboratory :</label>
+      <label>Workshop practice  :</label>
+      <center><select id="wpl" style="">
+        <option value="O" selected>O</option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="U">U</option>
+      </select></center>
+      </li></center>
+      <br>
+      <br>
+      <center><li>
+      <label>Physics and Chemistry Laboratory</label>
       <center><select id="pcl" style="">
-        <option value="O" selected>O</option>
-        <option value="A+">A+</option>
-        <option value="A">A</option>
-        <option value="B+">B+</option>
-        <option value="B">B</option>
-        <option value="U">U</option>
-      </select></center>
-      </li></center>
-      <br>
-      <br>
-      <center><li>
-      <label>Basic Electrical and Electronics<br>Engineering Laboratory :</label>
-      <center><select id="beeel" style="">
-        <option value="O" selected>O</option>
-        <option value="A+">A+</option>
-        <option value="A">A</option>
-        <option value="B+">B+</option>
-        <option value="B">B</option>
-        <option value="U">U</option>
-      </select></center>
-      </li></center>
-      <br>
-      <br>
-      <center><li>
-      <label>Python Programming Laboratory :</label>
-      <center><select id="pypl" style="">
         <option value="O" selected>O</option>
         <option value="A+">A+</option>
         <option value="A">A</option>
@@ -132,7 +119,7 @@
       </li></center>
       </ol>
       <br>
-  <center> <input type="submit" name="calculate" value="calculate" onclick="validate()" onmouseover="bigImg(this)" onmouseout="normalImg(this)" style=""  >
-    <h2 id="result">CGPA: 0.0</h2></center>
+  <center> <input type="submit" name="calculate" value="calculate" onclick="validate()" onmouseover="bigImg(this)" onmouseout="normalImg(this)" style="" id="but" >
+    <h2 id="result">GPA : 0.0</h2></center>
 </body>
 </html>
