@@ -2,7 +2,7 @@ from flask import Flask,render_template,request,flash,session,redirect,url_for
 from flask_mail import Mail,Message
 #from xlrw import Xlrw
 from uservalidations import UserValidations
-from dbactions import fetchStudentDashboard,userExists,fetchUserByEmail,insertStudentPersonalInfo,updateStudentPersonalInfo
+from dbactions import fetchStudentDashboard,userExists,fetchUserByEmail,insertStudentPersonalInfo,updateStudentPersonalInfo,insertStudentAcademicInfo,updateStudentAcademicInfo
 
 
 
@@ -75,7 +75,7 @@ def studentDashboard(username):
         return redirect(url_for("studentLogin"))
 
 
-@app.route("/<username>/personal_info")
+@app.route("/<username>/personal-info")
 def personalInfoDisplay(username):
     details=uv.studentPersonalInfoExist(username)
     if "studentuser" in session and username==session["studentuser"]["admission_no"] and isinstance(details,dict) :
@@ -88,7 +88,7 @@ def personalInfoDisplay(username):
         return "<h1>The page you're looking for was not found </h1>"
 
 
-@app.route("/<username>/personal_info/edit",methods={'GET','POST'})
+@app.route("/<username>/personal-info/edit",methods={'GET','POST'})
 def personalInfoEdit(username):
     details = session["personal_info"]
     if "studentuser" in session and username == session["studentuser"]["admission_no"] and details["edit_permission"]==True and details["admission_no"]=="":
@@ -109,12 +109,51 @@ def personalInfoEdit(username):
             except:
                 flash("Submission Error !","danger")
         return render_template("student_personal_info_edit.html",personal=details)
-        return render_template("student_personal_info_edit.html",personal=details)
     elif "studentuser" not in session:
         return redirect(url_for("studentLogin"))
     else:
         return "<h1>The page was not found</h1>"
     
+@app.route("/<username>/academic-info")
+def academicInfoDisplay(username):
+    details=uv.studentAcademicInfoExist(username)
+    if "studentuser" in session and username==session["studentuser"]["admission_no"] and isinstance(details,dict):
+        session["academic_info"]=details
+        return render_template("student_academic_info_display.html",username=username,academic=details)
+   
+    elif "studentuser" in session and username == session["studentuser"]["admission_no"] and not details:
+        session["academic_info"] = {"admission_no": "", "reg_no": "", "school_name": "", "school_place": "", "school_board": "", "school_medium": "", "school_group": "", "tenth_marks": "", "twelveth_marks": "","semester_1_gpa": 0.0, "semester_2_gpa": 0.0, "semester_3_gpa": 0.0, "semester_4_gpa": 0.0, "semester_5_gpa": 0.0, "semester_6_gpa": 0.0, "semester_7_gpa": 0.0, "semester_8_gpa": 0.0, "edit_permission": True}
+        return redirect(url_for("academicInfoEdit",username=username))
+    else:
+        return "<h1>The page your'e looking for was not found ! </h1>"
+
+@app.route("/<username>/academic-info/edit",methods=['GET','POST'])
+def academicInfoEdit(username):
+    details=session["academic_info"]
+    if "studentuser" in session and username == session["studentuser"]["admission_no"] and details["edit_permission"]==True and details["admission_no"]=="":
+        if request.method=="POST" :
+            try:
+                insertStudentAcademicInfo({"admission_no": username, "reg_no": request.form["reg_no"], "school_name": request.form["school_name"], "school_place": request.form["school_place"], "school_board": request.form["school_board"], "school_medium": request.form["school_medium"], "school_group": request.form["school_group"], "tenth_marks": request.form["tenth_marks"], "twelveth_marks": request.form["twelveth_marks"], "religion": request.form["religion"], "caste": request.form[
+                                          "caste"], "community": request.form["community"], "semester_1_gpa": request.form["semester_1_gpa"], "semester_2_gpa": request.form["semester_2_gpa"], "semester_3_gpa": request.form["semester_3_gpa"], "semester_4_gpa": request.form["semester_4_gpa"], "semester_5_gpa": request.form["semester_5_gpa"], "semester_6_gpa": request.form["semester_6_gpa"], "semester_7_gpa": request.form["semester_7_gpa"], "semester_8_gpa": request.form["semester_8_gpa"]})
+                flash("Details Submitted Successfully","success")
+                return redirect(url_for("studentDashboard",username=username))
+            except Exception as e:
+                flash("Submission Error !","danger")
+        return render_template("student_academic_info_edit.html",academic=details)
+    elif "studentuser" in session and username == session["studentuser"]["admission_no"] and details["edit_permission"] == True and details["admission_no"] != "":
+        if request.method=='POST' :
+            try:
+                updateStudentAcademicInfo({"admission_no": username, "reg_no": request.form["reg_no"], "school_name": request.form["school_name"], "school_place": request.form["school_place"], "school_board": request.form["school_board"], "school_medium": request.form["school_medium"], "school_group": request.form["school_group"], "tenth_marks": request.form["tenth_marks"], "twelveth_marks": request.form["twelveth_marks"],"religion":request.form["religion"],"caste":request.form["caste"],"community":request.form["community"], "semester_1_gpa": request.form["semester_1_gpa"], "semester_2_gpa": request.form["semester_2_gpa"], "semester_3_gpa": request.form["semester_3_gpa"], "semester_4_gpa": request.form["semester_4_gpa"], "semester_5_gpa": request.form["semester_5_gpa"], "semester_6_gpa": request.form["semester_6_gpa"], "semester_7_gpa": request.form["semester_7_gpa"], "semester_8_gpa": request.form["semester_8_gpa"]})
+                flash("Details updated successfullly !","success")
+                return redirect(url_for("studentDashboard",username=username))            
+            except Exception as e:
+                flash("Submission Error !","danger")
+        return render_template("student_academic_info_edit.html",academic=details)
+    elif "studentuser" not in session:
+        return redirect(url_for("studentLogin"))
+    else:
+        return "<h1>The page was not found</h1>"
+
 
 @app.route("/<username>/ResetPassword",methods=['GET','POST'])
 def passwordReset(username):

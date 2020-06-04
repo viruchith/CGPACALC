@@ -1,4 +1,4 @@
-from dbactions import fetchStudentPasswdHash,changeStudentPassword,fetchStudentDashboard,userExists,fetchStudentPersonalInfo
+from dbactions import fetchStudentPasswdHash,changeStudentPassword,fetchStudentDashboard,userExists,fetchStudentPersonalInfo,fetchStudentAcademicInfo
 from flask_bcrypt import Bcrypt
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
@@ -50,14 +50,20 @@ class UserValidations:
             return False
         elif isinstance(query,dict):
             return query
+    
+    @staticmethod
+    def studentAcademicInfoExist(admnno):
+        query=fetchStudentAcademicInfo(admnno)
+        if query==False:
+            return False
+        else:
+            return query
 
 
         
         
 
-#obj=UserValidations()
 
-#obj.studentPasswordReset("19CSEBE163","dg3sCV")
 
 
 

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Info Edit</title>
+</head>
+<body>
+    {%block flashMessages%}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {%endblock flashMessages%}
+    <form action="" method="post">
+        <label for="">Reg No : </label>
+        <input type="text" name="reg_no" id="" value="{{academic["reg_no"]}}">
+        <br>
+        <label for="">School Name : </label>
+        <input type="text" name="school_name" value="{{academic['school_name']}}">
+        <br>
+        <label for="">school Place : </label>
+        <input type="text" name="school_place" value="{{academic['school_place']}}">
+        <br>
+        <label for="">School Board : </label>
+        <input type="text" name="school_board" value="{{academic['school_board']}}">
+        <br>
+        <label for="">School Medium : </label>
+        <input type="text" name="school_medium" value="{{academic['school_medium']}}">
+        <br>
+        <label for="">School Group : </label>
+        <input type="text" name="school_group" value="{{academic['school_group']}}">
+        <br>
+        <label for="">Tenth Marks : </label>
+        <input type="text" name="tenth_marks" value="{{academic['tenth_marks']}}">
+        <br>
+        <label for="">Twelveth Marks : </label>
+        <input type="text" name="twelveth_marks" value="{{academic['twelveth_marks']}}">
+        <br>
+        <label for="">Religion : </label>
+       <!--  <input type="text" name="religion" value="{{academic['religion']}}"> -->
+       <div id="religionCont" style="display:none;">{{academic['religion']}}</div>
+       <select name="religion" id="">
+           <option value="Hinduism" id="#hindu">Hinduism</option>
+           <option value="Muslim" id='#muslim'>Muslim</option>
+           <option value="Christianity" id="#christianity">Christianity</option>
+           <option value="Jainism" id='#jainism'>Jainism</option>
+           <option value="Buddhism" id="#buddhism">Buddhism</option>
+       </select>
+        <br>
+        <label for="">Caste : </label>
+        <input type="text" name="caste" value="{{academic['caste']}}">
+        <br>
+        <label for="">Community : </label>
+        <input type="text" name="community" value="{{academic['community']}}">
+        <br>
+        <label for="">Semester - 1 - GPA :</label>
+        <input type="text" name="semester_1_gpa" id="" value="{{academic['semester_1_gpa']}}">
+        <br>
+        <label for="">Semester - 2 - GPA :</label>
+        <input type="text" name="semester_2_gpa" id="" value="{{academic['semester_2_gpa']}}">
+        <br>
+        <label for="">Semester - 3 - GPA :</label>
+        <input type="text" name="semester_3_gpa" id="" value="{{academic['semester_3_gpa']}}">
+        <br>
+        <label for="">Semester - 4 - GPA :</label>
+        <input type="text" name="semester_4_gpa" id="" value="{{academic['semester_4_gpa']}}">
+        <br>
+        <label for="">Semester - 5 - GPA :</label>
+        <input type="text" name="semester_5_gpa" id="" value="{{academic['semester_5_gpa']}}">
+        <br>
+        <label for="">Semester - 6 - GPA :</label>
+        <input type="text" name="semester_6_gpa" id="" value="{{academic['semester_6_gpa']}}">
+        <br>
+        <label for="">Semester - 7 - GPA :</label>
+        <input type="text" name="semester_7_gpa" id="" value="{{academic['semester_7_gpa']}}">
+        <br>
+        <label for="">Semester - 8 - GPA :</label>
+        <input type="text" name="semester_8_gpa" id="" value="{{academic['semester_8_gpa']}}">
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <script>
+        var religion = document.getElementById("religionCont").innerHTML;
+        function returnReligionId(rel){
+            if (rel==="Hindu"){
+                return '#hindu'
+            }
+            if (rel==="Muslim"){
+            return '#muslim'
+            }
+            if (rel==="Christianity"){
+            return '#christianity'
+            }
+            if (rel==="Buddhism"){
+            return '#buddhism'
+            }
+            if (rel==="Jainism"){
+            return '#jainism'
+            }
+        }
+        document.getElementById(returnReligionId(religion)).setAttribute('selected','true');
+
+    </script>
+</body>
+</html>
