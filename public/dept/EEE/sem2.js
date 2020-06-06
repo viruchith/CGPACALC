@@ -18,25 +18,22 @@ function validate() {
 var eng=document.getElementById('eng');
 var mat=document.getElementById('mat');
 var phy=document.getElementById('phy');
-var chem=document.getElementById('chem');
-var fib=document.getElementById('fib');
-var pcl=document.getElementById('pcl');
-var fibl=document.getElementById('fibl');
-var cpl=document.getElementById('cpl');
+var ecd=document.getElementById('ecd');
+var mi=document.getElementById('mi');
+var phyl=document.getElementById('phyl');
+var ecdl=document.getElementById('ecdl');
 
 
-console.log("Success");
 var gp1=grade(eng.value);
 var gp2=grade(mat.value);
 var gp3=grade(phy.value);
-var gp4=grade(chem.value);
-var gp5=grade(fib.value);
-var gp6=grade(pcl.value);
-var gp7=grade(fibl.value);
-var gp8=grade(cpl.value);
+var gp4=grade(ecd.value);
+var gp5=grade(mi.value);
+var gp6=grade(phyl.value);
+var gp7=grade(ecdl.value);
 
-var cgpa=((gp1*2)+3*(gp3+gp4+gp5)+(gp6+gp7+gp8)+(gp2*4))/18;
-console.log(gp1,gp2,gp3,gp4,gp5,gp6,gp7,gp8);
+var cgpa=((gp1*2)+4*(gp2+gp3+gp4)+1.5*(gp6+gp7)+(gp5*3))/20;
+console.log(gp1,gp2,gp3,gp4,gp5,gp6,gp7);
 console.log(cgpa);
  document.getElementById("result").innerHTML = "GPA : "+cgpa.toFixed(2);
 

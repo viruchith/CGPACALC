@@ -37,7 +37,7 @@ var gp8=grade(pypl.value);
 var cgpa=(3*(gp3+gp4+gp5)+2*gp1+((gp6*1.5)+gp7+gp8)+4*gp2)/18.5;
 console.log(gp1,gp2,gp3,gp4,gp5,gp6,gp7,gp8);
 console.log(cgpa);
- document.getElementById("result").innerHTML = "CGPA: "+cgpa.toFixed(2);
+ document.getElementById("result").innerHTML = "GPA : "+cgpa.toFixed(2);
 
 
 }

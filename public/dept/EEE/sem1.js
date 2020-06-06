@@ -38,7 +38,7 @@ var gp8=grade(wpl.value);
 var cgpa=((gp1*2)+3*(gp3+gp4+gp5)+(gp6+gp8)+(gp2*4)+(gp7*1.5))/18.5;
 console.log(gp1,gp2,gp3,gp4,gp5,gp6,gp7,gp8);
 console.log(cgpa);
- document.getElementById("result").innerHTML = "CGPA: "+cgpa.toFixed(2);
+ document.getElementById("result").innerHTML = "GPA: "+cgpa.toFixed(2);
 
 
 }

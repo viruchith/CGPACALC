@@ -15,30 +15,29 @@ function grade(g) {
 }
 
 function validate() {
-var eng=document.getElementById('eng');
 var mat=document.getElementById('mat');
 var phy=document.getElementById('phy');
 var chem=document.getElementById('chem');
-var fib=document.getElementById('fib');
-var pcl=document.getElementById('pcl');
-var fibl=document.getElementById('fibl');
-var cpl=document.getElementById('cpl');
+var bme=document.getElementById('bme');
+var wfms=document.getElementById('wfms');
+var eg=document.getElementById('eg');
+var eng=document.getElementById('eng');
+var wfmsl=document.getElementById('wfmsl');
 
 
-console.log("Success");
-var gp1=grade(eng.value);
-var gp2=grade(mat.value);
-var gp3=grade(phy.value);
-var gp4=grade(chem.value);
-var gp5=grade(fib.value);
-var gp6=grade(pcl.value);
-var gp7=grade(fibl.value);
-var gp8=grade(cpl.value);
+var gp1=grade(mat.value);
+var gp2=grade(phy.value);
+var gp3=grade(chem.value);
+var gp4=grade(bme.value);
+var gp5=grade(wfms.value);
+var gp6=grade(eg.value);
+var gp7=grade(eng.value);
+var gp8=grade(wfmsl.value);
 
-var cgpa=((gp1*2)+3*(gp3+gp4+gp5)+(gp6+gp7+gp8)+(gp2*4))/18;
+var cgpa=((gp1*4)+3*(gp2+gp3+gp4+gp5)+(gp7+gp8)+(gp6*2))/20;
 console.log(gp1,gp2,gp3,gp4,gp5,gp6,gp7,gp8);
 console.log(cgpa);
- document.getElementById("result").innerHTML = "GPA : "+cgpa.toFixed(2);
+ document.getElementById("result").innerHTML = "GPA: "+cgpa.toFixed(2);
 
 
 }

@@ -15,29 +15,27 @@ function grade(g) {
 }
 
 function validate() {
-var chem=document.getElementById('chem');
+var phy=document.getElementById('phy');
 var mat=document.getElementById('mat');
-var eda=document.getElementById('eda');
-var eg=document.getElementById('eg');
-var edal=document.getElementById('edal');
-var cheml=document.getElementById('cheml');
-var wpl=document.getElementById('wpl');
+var pyp=document.getElementById('pyp');
+var mp=document.getElementById('mp');
 var eng=document.getElementById('eng');
+var phyl=document.getElementById('phyl');
+var pypl=document.getElementById('pypl');
 
 
 
 console.log("Success");
-var gp1=grade(eng.value);
+var gp1=grade(phy.value);
 var gp2=grade(mat.value);
-var gp3=grade(chem.value);
-var gp4=grade(eda.value);
-var gp5=grade(eg.value);
-var gp6=grade(edal.value);
-var gp7=grade(cheml.value);
-var gp8=grade(wpl.value);
+var gp3=grade(pyp.value);
+var gp4=grade(mp.value);
+var gp5=grade(eng.value);
+var gp6=grade(phyl.value);
+var gp7=grade(pypl.value);
 
-var cgpa=(3*(gp4+gp5)+(2*gp6)+(gp1+gp8)+(4*(gp2+gp3))+(gp7*1.5))/19.5;
-console.log(gp1,gp2,gp3,gp4,gp5,gp6,gp7,gp8);
+var cgpa=(3*(gp3+gp5)+(gp7)+(4*(gp1+gp2+gp4))+(gp6*1.5))/20.5;
+console.log(gp1,gp2,gp3,gp4,gp5,gp6,gp7);
 console.log(cgpa);
  document.getElementById("result").innerHTML = "GPA : "+cgpa.toFixed(2);
 
