@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents :</title>
+</head>
+<body>
+    <label for="">Tenth Marklist : <a href="/{{username}}/upload/10th-mark-list">upload</a></label>
+    <br>
+    <img src="{{url_for('static',filename='10th-mark-list/'+doc['tenth-marklist'])}}" alt="">
+    <label for="">Twelfth Marklist : <a href="/{{username}}/upload/12th-mark-list">upload</a> </label>
+    <br>
+    <img src="{{url_for('static',filename='12th-mark-list/'+doc['twelfth-marklist'])}}" alt="">
+    <label for="">Birth Certificate : <a href="/{{username}}/upload/birth-certificate">upload</a></label>
+    <br>
+    <img src="{{url_for('static',filename='birth-certificate/'+doc['birth-certificate'])}}" alt="">
+    <label for="">Community Certificate :<a href="/{{username}}/upload/community-certificate">upload</a></label>
+    <br>
+    <img src="{{url_for('static',filename='community-certificate/'+doc['community-certificate'])}}" alt="">
+    <label for="">Passport Size Photo :<a href="/{{username}}/upload/passport-size-photo">upload</a></label>
+    <br>
+    <img src="{{url_for('static',filename='passport-size-photo/'+doc['passport-size-photo'])}}" alt="">
+    <label for="">Signature :<a href="/{{username}}/upload/signature">upload</a></label>
+    <br>
+    <img src="{{url_for('static',filename='signature/'+doc['signature'])}}" alt="">
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family - edit</title>
+</head>
+<body>
+    <form action="" method="post">
+        <label for="">No of Family Members :  </label>
+        <input type="number" name="family-mem" value="{{family[1]}}" id="" required >
+        <h2><u>Father :</u></h2>
+        <label for="">First name : </label>
+        <input type="text" name="father-fname" value="{{family[2]}}" id="" required>
+        <br>
+        <label for="">Last name : </label>
+        <input type="text" name="father-lname" value="{{family[3]}}" id="" required>
+        <br>
+        <label for="">Occupation :</label>
+        <input type="text" name="father-occupation" value="{{family[4]}}" id="" required>
+        <br>
+        <label for="">DOB</label>
+        <input type="text" name="father-dob" value="{{family[5]}}" id="" required>
+        <br>
+        <h2><u>Mother :</u></h2>
+        <label for="">First name : </label>
+        <input type="text" name="mother-fname" value="{{family[6]}}" id="" required>
+        <br>
+        <label for="">Last name : </label>
+        <input type="text" name="mother-lname" value="{{family[7]}}" id="" required>
+        <br>
+        <label for="">Occupation :</label>
+        <input type="text" name="mother-occupation" value="{{family[8]}}" id="" required>
+        <br>
+        <label for="">DOB</label>
+        <input type="text" name="mother-dob" value="{{family[9]}}" id="" required>
+        <br>
+            <div id="has-siblings">{{family[10]}}</div>
+        <label for="">Have siblings : {{family[10]}} </label>
+        <select name="have-sibling" id="have-sibling" required>
+            <option value="true" id="have-sibling-true">Yes</option>
+            <option value="false" id="have-sibling-false">No</option>
+        </select>
+        <br>
+        <label for="">No of Siblings : </label>
+        <input type="number" name="no-of-siblings" value="{{family[11]}}" id="" required>
+        <br>
+        <button type="submit" class="btn btn-primary" name="family-edit">Update</button>
+    </form>
+    <div id="sibling-form">
+        <form action="" method="post">
+            <label for="">Relation : </label>
+            <select name="sibling-realtion" id="">
+                <option value="Elder Brother">Elder Brother</option>
+                <option value="Elder Sister">Elder Sister</option>
+                <option value="Younger Brother">Younger Brother</option>
+                <option value="Younger Sister">Younger Sister</option>
+                <option value="Twin Brother">Twin Brother</option>
+                <option value="Twin Sister">Twin Sister</option>
+            </select>
+            <br>
+            <label for="">Name : </label>
+            <input type="text" name="sibling-name" id="">
+            <br>
+            <label for="">Status : </label>
+            <select name="sibling-status" id="">
+                <option value="Primary School">Primary School</option>
+                <option value="Higher Secondary">Higher Secondary</option>
+                <option value="Working">Working</option>
+            </select>
+            <br>
+            <label for="">Age : </label>
+            <input type="number" name="age" id="">
+            <br>
+            <label for="">Associated with Sona group of instituitions : </label>
+            <select name="sibling-sona" id="">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br>
+            <label for="">Description : </label>
+            <textarea name="sibling-description" id="" cols="30" rows="10"></textarea>
+            <button type="submit" name="add-sibling" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+    <script>
+        var sibling = document.getElementById("has-siblings").innerHTML;
+        if(sibling==="True"){
+            document.getElementById("have-sibling-true").setAttribute("selected","true");
+        }else{
+            document.getElementById("have-sibling-false").setAttribute("selected","true");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extra Curricular</title>
+</head>
+<body>
+    <h1>Talents :</h1>
+    <br>
+    {%for i in talentlist%}
+    <h4>Title : {{i[2]}}</h4>
+    <br>
+    <h4>Description : {{i[3]}}</h4>
+    <a href="/{{i[1]}}/talent/extra-curricular/{{i[0]}}/delete" onclick="return confirm('Are you sure want to delete this ?');">
+        <h5>DELETE</h5>
+    </a>
+    <br>
+    <br>
+    {%endfor%}
+    <form action=""  method="post" onsubmit="">
+        <label for="">
+            <h4>Title : </h4>
+        </label>
+        <input type="text" name="talent-title" id="" required >
+        <label for="">
+            <h4>Description</h4>
+        </label>
+        <textarea name="talent-description" id="" cols="30" rows="10"></textarea>
+        <button type="submit" name="add-talent" class="btn btn-primary">Submit Talent</button>
+    </form>
+    <h1>Achievements : </h1>
+    <br>
+    {%for i in achievementlist%}
+    <h4>Title : {{i[2]}}</h4>
+    <br>
+    <h4>Description : {{i[3]}}</h4>
+    <a href="/{{i[1]}}/achievement/extra-curricular/{{i[0]}}/delete"
+        onclick="return confirm('Are you sure want to delete this ?');">
+        <h5>DELETE</h5>
+    </a>
+    <br>
+    <br>
+    {%endfor%}
+    <form action="" method="post" onsubmit="">
+        <label for="">
+            <h4>Title : </h4>
+        </label>
+        <input type="text" name="achievement-title" id="" required>
+        <label for="">
+            <h4>Description</h4>
+        </label>
+        <textarea name="achievement-description" id="" cols="30" rows="10"></textarea>
+        <button type="submit" name="add-achievement" class="btn btn-primary">Submit Achievement</button>
+ </form>
+</body>
+</html>

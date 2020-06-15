@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses and Activities</title>
+</head>
+<body>
+    <h1>Courses : </h1>
+    {%for i in courselist%}
+    <h4>Title : {{i[2]}}</h4>
+    <h5><a href="{{i[3]}}">certificate</a></h5>
+    <h4>Semester : {{i[4]}}</h4>
+    <h4>Description : {{i[5]}}</h4>
+    <h6><a href="/{{username}}/certifications-and-events/course/delete/{{i[0]}}" onclick="return confirm('Are you sure want to delete this ?');">DELETE</a></h6>
+    {%endfor%}
+    <br>
+    <form action="" method="post">
+        <label for="">Title :</label>
+        <input type="text" name="course-title" id="">
+        <br>
+        <label for="">Link :</label>
+        <input type="text" name="course-link" id="">
+        <br>
+        <label for="">Semester:  :</label>
+        <select name="course-semester" id="">
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+            <option value="VI">VI</option>
+            <option value="VII">VII</option>
+            <option value="VIII">VIII</option>
+        </select>
+        <br>
+        <label for="">Description : </label>
+        <textarea name="course-description" id="" cols="30" rows="10"></textarea>
+        <button type="submit" name="add-course" class="btn btn-primary">Add Course</button>
+    </form>
+<br>
+    <h1>Activities : </h1>
+    {%for i in activitylist%}
+    <h4>Category : {{i[2]}} </h4>
+    <h4>Title : {{i[3]}}</h4>
+    <h5><a href="{{i[4]}}">certificate</a></h5>
+    <h4>Semester : {{i[5]}}</h4>
+    <h4>Description : {{i[6]}}</h4>
+    <h6><a href="/{{username}}/certifications-and-events/activity/delete/{{i[0]}}" onclick="return confirm('Are you sure want to delete this ?');">DELETE</a></h6>
+    {%endfor%}
+<form action="" method="post">
+    <label for="">Title :</label>
+    <input type="text" name="activity-title" id="">
+    <br>
+    <label for="">Link :</label>
+    <input type="text" name="activity-link" id="">
+    <br>
+    <label for="">Semester: :</label>
+    <select name="activity-semester" id="">
+        <option value="I">I</option>
+        <option value="II">II</option>
+        <option value="III">III</option>
+        <option value="IV">IV</option>
+        <option value="V">V</option>
+        <option value="VI">VI</option>
+        <option value="VII">VII</option>
+        <option value="VIII">VIII</option>   
+    </select>
+    <select name="activity-certtype" id="">
+        <option value="Winner">Winner</option>
+        <option value="Participant">Participant</option>
+    </select>
+    <br>
+    <label for="">Description : </label>
+    <textarea name="activity-description" id="" cols="30" rows="10"></textarea>
+    <button type="submit" name="add-activity" class="btn btn-primary">Add Certificate</button>
+</form>
+</body>
+</html>

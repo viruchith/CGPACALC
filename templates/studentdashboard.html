@@ -1,8 +1,26 @@
-<h1>Name : {{name}}</h1><br>
-<h1>Admission no : {{admnno}} </h1><br>
-<h1>Email ID : {{mail}}</h1><br>
-<h1>Mobile  : {{mob}} </h1><br>
-<h1><a href="{{url_for('logout')}}">LogOut</a></h1><br>
-<h1><a href="/{{admnno}}/ResetPassword">Reset Password</a></h1><br>
-<h1><a href="/{{admnno}}/personal-info">View Personal</a></h1>
-<h1><a href="/{{admnno}}/academic-info">View Academic</a></h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <br>
+    <img src="{{url_for('static',filename='passport-size-photo/'+pic)}}"alt="{{url_for('static',filename='student_profile_pics/default.jpg')}}" class="img-thumbnail" style="height:10%; width:10%; border-color:black;">
+    <br>
+    <h1>Name : {{name}}</h1><br>
+    <h1>Admission no : {{admnno}} </h1><br>
+    <h1>Email ID : {{mail}}</h1><br>
+    <h1>Mobile : {{mob}} </h1><br>
+    <h1><a href="{{url_for('logout')}}">LogOut</a></h1><br>
+    <h1><a href="/{{admnno}}/ResetPassword">Reset Password</a></h1><br>
+    <h1><a href="/{{admnno}}/personal-info">View Personal</a></h1>
+    <h1><a href="/{{admnno}}/extra-curricular">View Extra-Curricular</a> </h1>
+    <h1><a href="/{{admnno}}/certifications-and-events">Courses and Events</a></h1>    
+    <h1><a href="/{{admnno}}/academic-info">View Academic</a></h1>
+    <h1><a href="/{{admnno}}/documents">View Documents</a> </h1>
+    <h1><a href="/{{admnno}}/Family">View Family</a> </h1>
+</body>
+</html>
