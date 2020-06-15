@@ -2,8 +2,8 @@ from flask import Flask,render_template,request,flash,session,redirect,url_for
 from flask_mail import Mail,Message
 #from xlrw import Xlrw
 from uservalidations import UserValidations
-from dbactions import fetchStudentDashboard,userExists,fetchUserByEmail,insertStudentPersonalInfo,updateStudentPersonalInfo,insertStudentAcademicInfo,updateStudentAcademicInfo
-
+from dbactions import fetchStudentDashboard,userExists,fetchUserByEmail,insertStudentPersonalInfo,updateStudentPersonalInfo,insertStudentAcademicInfo,updateStudentAcademicInfo,updateImportantDocuments,getStudentDocuments,fetchStudentTalents,deleteStudentTalent,insertStudentTalent,fetchStudentAchievements,deleteStudentTalent,insertStudentAchievement,deleteStudentAchievement,insertStudentExtraCourse,fetchStudentExtraCourses,deleteStudentExtraCourse,insertStudentActivitiy,fetchStudentActivities,deleteStudentExtraActivity,fetchStudentFamily,updateFamily
+import os
 
 
 app = Flask(__name__, template_folder="/Users/ganesankoundappan/Projects/CSEwebApp/templates")
@@ -31,7 +31,7 @@ fmail=Mail(app)
 
 def sendResetMail(mail,token):
     msg=Message("Forgot Password Request ! ",
-    sender="sonacse2019to2023@gmail.com",
+                sender="SONA CSE APP",
     recipients=[mail])
     msg.body=f'''To reset your password for Sona CSE SIMS, please visit the following link :
     http://127.0.0.1:5000{url_for('forgotPasswordReset',token=token)}
@@ -68,7 +68,7 @@ def studentDashboard(username):
     if "studentuser" in session:
         if username==session["studentuser"]["admission_no"]:
             details=fetchStudentDashboard(session["studentuser"]["admission_no"])
-            return render_template("studentdashboard.html",name=details["student_name"],admnno=details["admission_no"],mail=details["email_id"],mob=details["mobile_no"])
+            return render_template("studentdashboard.html",name=details["student_name"],admnno=details["admission_no"],mail=details["email_id"],mob=details["mobile_no"],pic=details["profile_pic"])
         else:
             return "<h1>404 Page Not Found</h1>"
     else :
@@ -113,7 +113,7 @@ def personalInfoEdit(username):
         return redirect(url_for("studentLogin"))
     else:
         return "<h1>The page was not found</h1>"
-    
+
 @app.route("/<username>/academic-info")
 def academicInfoDisplay(username):
     details=uv.studentAcademicInfoExist(username)
@@ -153,6 +153,142 @@ def academicInfoEdit(username):
         return redirect(url_for("studentLogin"))
     else:
         return "<h1>The page was not found</h1>"
+
+@app.route("/<username>/documents")
+def documentsDisplay(username):
+    if "studentuser" in session and username==session["studentuser"]["admission_no"]:
+        return render_template("student_document_display.html",username=username,doc=getStudentDocuments(admnno=username))
+    else:
+        return "<h1>Access Denied</h1>"
+
+@app.route("/<username>/upload/<filetype>",methods=['GET','POST'])
+def docSave(username,filetype):
+    fileTypeList = ["10th-mark-list", "12th-mark-list", "birth-certificate","community-certificate", "passport-size-photo", "signature"]
+    if "studentuser" in session and username==session["studentuser"]["admission_no"]:
+        if request.method=='POST':
+            if filetype in fileTypeList:
+                f=request.files["stuDoc"]
+                _,ext=os.path.splitext(f.filename)
+                docname=username+'-'+filetype+ext
+                pic_path=os.path.join(app.root_path,f'static/{filetype}',docname)
+                f.save(pic_path)
+                updateImportantDocuments(username,filetype,docname)
+                return redirect(url_for("documentsDisplay",username=username))
+        return render_template("student_document_upload.html")
+    else:
+        return "<h1>Unauthorised Access</h1>"
+
+
+@app.route("/<username>/extra-curricular",methods=['GET','POST'])
+def studentExtraCurricular(username):
+    if "studentuser" in session and username==session["studentuser"]["admission_no"]:
+        talents=fetchStudentTalents(admnno=username)
+        achievements=fetchStudentAchievements(admnno=username)
+        if request.method=='POST' and "add-talent" in request.form:
+            try:
+                insertStudentTalent(talent_id=uv.generateId(username),admnno=username,title=request.form["talent-title"],description=request.form["talent-description"])
+                return redirect(url_for("studentExtraCurricular",username=username))
+            except:
+                return "<h1>Submission Error</h1>"
+        if request.method=='POST' and "add-achievement" in request.form:
+            try:
+                insertStudentAchievement(achievement_id=uv.generateId(username),admnno=username,title=request.form["achievement-title"],description=request.form["achievement-description"])
+                return redirect(url_for("studentExtraCurricular",username=username))
+            except:
+                return "<h1>Submission Error</h1>"
+        return render_template("student_extra_curricular.html",username=username,talentlist=talents,achievementlist=achievements)
+    else:
+        return "<h1>Unauthorised Access</h1>"
+
+@app.route("/<username>/<category>/extra-curricular/<catid>/delete")
+def deleteTalent(username,category,catid):
+    if "studentuser" in session and username==session["studentuser"]["admission_no"]:
+        if category=="talent":
+            try:
+                deleteStudentTalent(talentid=catid)
+            except:
+                return "<h1>Invalid Request</h1>"
+            return redirect(url_for("studentExtraCurricular",username=username))
+        elif category=="achievement":
+            try:
+                deleteStudentAchievement(achievementid=catid)
+            except:
+                return "<h1>Invalid Request</h1>"
+            return redirect(url_for("studentExtraCurricular",username=username))
+    else:
+        return "<h1>Unauthorised Access</h1>"
+
+@app.route("/<username>/certifications-and-events",methods=['GET','POST'])
+def certificationsAndEvents(username):
+    if "studentuser" in session and username==session["studentuser"]["admission_no"]:
+        courses=fetchStudentExtraCourses(admnno=username)
+        activities=fetchStudentActivities(admnno=username)
+
+        if request.method=='POST' and "add-course" in request.form:
+                try:
+                    insertStudentExtraCourse(courseid=uv.generateId(username),admnno=username,title=request.form["course-title"],link=request.form["course-link"],semester=request.form["course-semester"],description=request.form["course-description"])
+                    return redirect(url_for("certificationsAndEvents",username=username))
+                except:
+                    return "<h1>Submission Error</h1>"
+
+        if request.method=='POST' and "add-activity" in request.form:
+                try:
+                    insertStudentActivitiy(actid=uv.generateId(username), admnno=username,certtype=request.form["activity-certtype"], title=request.form["activity-title"], link=request.form["activity-link"], semester=request.form["activity-semester"], description=request.form["activity-description"])
+                    return redirect(url_for("certificationsAndEvents",username=username))
+                except:
+                    return "<h1>Submission Error</h1>"
+
+        return render_template("student_courses_and_activities.html",username=username,courselist=courses,activitylist=activities)
+
+    else:
+        return "<h1>Unauthorised Access</h1>"
+
+@app.route("/<username>/certifications-and-events/<category>/delete/<id>")
+def deleteCertificationAndEvent(username,category,id):
+    if "studentuser" in session and username==session["studentuser"]["admission_no"]:
+        if category=="course":
+            try:
+                deleteStudentExtraCourse(id)
+            except:
+                return "<h1>Invalid Request</h1>"
+            return redirect(url_for("certificationsAndEvents",username=username))
+        elif category=="activity":
+            try:
+                deleteStudentExtraActivity(id)
+            except:
+                return "<h1>Invalid Request</h1>"
+            return redirect(url_for("certificationsAndEvents",username=username))
+
+    else:
+        return "<h1>Access Denied</h1>"
+
+@app.route("/<username>/Family")
+def studentFamilyDisplay(username):
+    family=fetchStudentFamily(admnno=username)
+    if "studentuser" in session and username==session["studentuser"]["admission_no"] and family[1]!=None:
+        return render_template("student_family_display.html",username=username,details=family)
+    elif "studentuser" in session and username==session["studentuser"]["admission_no"] and family[1]==None:
+        return redirect(url_for("studentFamilyEdit",username=username))
+    else:
+        return "<h1>Access Denied</h1>"
+
+
+@app.route("/<username>/Family/edit", methods=['GET', 'POST'])
+def studentFamilyEdit(username):
+    details=fetchStudentFamily(username)
+    if "studentuser" in session and username==session["studentuser"]["admission_no"]:
+        if "family-edit" in request.form and request.method =='POST':
+            #try:
+            updateFamily(admnno=username, nomem=request.form["family-mem"], father_fname=request.form["father-fname"], father_lname=request.form["father-lname"], father_occupation=request.form["father-occupation"], father_dob=request.form["father-dob"],
+                         mother_fname=request.form["mother-fname"], mother_lname=request.form["mother-lname"], mother_occupation=request.form["mother-occupation"], mother_dob=request.form["mother-dob"], have_sibling=request.form["have-sibling"], noofsiblings=request.form["no-of-siblings"])
+            #except:
+            #return "<h1>Submission Error !</h1>"
+            return redirect(url_for("studentFamilyDisplay",username=username))
+        return(render_template("student_family_edit.html",username=username,family=details))
+    else:
+        return "<h1>Access Denied</h1>"
+
+    
 
 
 @app.route("/<username>/ResetPassword",methods=['GET','POST'])

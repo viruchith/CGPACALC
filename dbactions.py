@@ -29,12 +29,13 @@ def fetchStudentPasswdHash(email):
 
 def fetchStudentDashboard(admnno):
     details={}
-    cursor.execute("""SELECT admission_no,email_id,student_name,mobile_no FROM student_primary_credentials WHERE admission_no = %s """, (admnno,))
+    cursor.execute("""SELECT admission_no,email_id,student_name,mobile_no,profile_pic FROM student_primary_credentials WHERE admission_no = %s """, (admnno,))
     result=cursor.fetchone()
     details["admission_no"]=result[0]
     details["email_id"]=result[1]
     details["student_name"]=result[2]
     details["mobile_no"] = result[3]
+    details["profile_pic"]= result[4]
     return details
 
 def changeStudentPassword(admnno,new_hash):
@@ -238,4 +239,115 @@ def updateStudentAcademicInfo(details):
         
         """, (details["reg_no"], details["school_name"], details["school_place"], details["school_board"], details["school_medium"], details["school_group"], details["tenth_marks"], details["twelveth_marks"], details["religion"], details["caste"], details["community"], details["semester_1_gpa"], details["semester_2_gpa"], details["semester_3_gpa"], details["semester_4_gpa"], details["semester_5_gpa"], details["semester_6_gpa"], details["semester_7_gpa"], details["semester_8_gpa"],details["admission_no"]))
     connection.commit()
+
+def updateImportantDocuments(admnno,doctype,filename):
+    if doctype=="10th-mark-list":
+      cursor.execute("""UPDATE student_documents SET tenth_marklist = %s WHERE admission_no = %s""",(filename,admnno))
+    elif doctype=="12th-mark-list":
+      cursor.execute("""UPDATE student_documents SET twelfth_marklist = %s WHERE admission_no = %s""",(filename,admnno))
+    elif doctype=="birth-certificate":
+      cursor.execute("""UPDATE student_documents SET birth_certificate = %s WHERE admission_no = %s""",(filename,admnno))
+    elif doctype=="community-certificate":
+      cursor.execute("""UPDATE student_documents SET community_certificate = %s WHERE admission_no = %s""",(filename,admnno))
+    elif doctype=="passport-size-photo":
+      cursor.execute("""UPDATE student_primary_credentials SET profile_pic = %s WHERE admission_no = %s""",(filename,admnno))
+      cursor.execute("""UPDATE student_documents SET passport_size_photo = %s WHERE admission_no = %s""",(filename,admnno))
+    elif doctype=="signature":
+      cursor.execute("""UPDATE student_documents SET signature = %s WHERE admission_no = %s""", (filename, admnno))
+    else:
+        return False
+    connection.commit()
+    return True    
+
+def getStudentDocuments(admnno):
+    details={}
+    cursor.execute("""SELECT tenth_marklist,twelfth_marklist,birth_certificate,community_certificate,passport_size_photo,signature FROM student_documents WHERE admission_no = %s """,(admnno,))
+    result=cursor.fetchone()
+    details["tenth-marklist"]=result[0]
+    details["twelfth-marklist"]=result[1]
+    details["birth-certificate"]=result[2]
+    details["community-certificate"]=result[3]
+    details["passport-size-photo"] = result[4]
+    details["signature"]=result[5]
+    return details
+
+def insertStudentTalent(talent_id,admnno,title,description):
+    cursor.execute("""INSERT INTO student_talents (talent_id,admission_no,title,description) VALUES (%s,%s,%s,%s)""",(talent_id,admnno,title,description))
+    connection.commit()
+    return True
+
+def fetchStudentTalents(admnno):
+    cursor.execute(""" SELECT talent_id,admission_no,title,description FROM student_talents WHERE admission_no = %s """,(admnno,))
+    result=cursor.fetchall()
+    return result
+
+def deleteStudentTalent(talentid):
+    cursor.execute(""" DELETE FROM student_talents WHERE talent_id = %s """,(talentid,))
+    connection.commit()
+    return True
+
+def insertStudentAchievement(achievement_id,admnno,title,description):
+    cursor.execute(""" INSERT INTO student_achievements (achievement_id,admission_no,title,description) VALUES (%s,%s,%s,%s) """,(achievement_id, admnno, title, description))
+    connection.commit()
+    return True
+
+def fetchStudentAchievements(admnno):
+    cursor.execute(""" SELECT achievement_id,admission_no,title,description FROM student_achievements WHERE admission_no = %s """,(admnno,))
+    result=cursor.fetchall()
+    return result
+
+def deleteStudentAchievement(achievementid):
+    cursor.execute(""" DELETE FROM student_achievements WHERE achievement_id = %s """,(achievementid,))
+    connection.commit()
+    return True
+
+def insertStudentExtraCourse(courseid,admnno,title,link,semester,description):
+    cursor.execute("""INSERT INTO student_extra_courses (course_id,admission_no,title,link,semester,description) VALUES (%s,%s,%s,%s,%s,%s)""",(courseid, admnno, title,link,semester, description))
+    connection.commit()
+    return True
+
+def fetchStudentExtraCourses(admnno):
+    cursor.execute(""" SELECT course_id,admission_no,title,link,semester,description FROM student_extra_courses WHERE admission_no = %s """,(admnno,))
+    result=cursor.fetchall()
+    return result
+
+def deleteStudentExtraCourse(courseid):
+    cursor.execute(""" DELETE FROM student_extra_courses WHERE course_id = %s """,(courseid,))
+    connection.commit()
+    return True
+
+def insertStudentActivitiy(actid,admnno,certtype,title,link,semester,description):
+    cursor.execute("""INSERT INTO student_event_activities (certid,admission_no,cert_type,title,semester,link,description) VALUES (%s,%s,%s,%s,%s,%s,%s)""",(actid, admnno,certtype, title,semester,link, description))
+    connection.commit()
+    return True
+
+def fetchStudentActivities(admnno):
+    cursor.execute(""" SELECT certid,admission_no,cert_type,title,link,semester,description FROM student_event_activities WHERE admission_no = %s """, (admnno,))
+    result = cursor.fetchall()
+    return result
+
+def deleteStudentExtraActivity(actid):
+    cursor.execute(""" DELETE FROM student_event_activities WHERE certid = %s """,(actid,))
+    connection.commit()
+    return True
+
+def fetchStudentFamily(admnno):
+    cursor.execute(""" SELECT * FROM student_family WHERE admission_no = %s """,(admnno,))
+    result=cursor.fetchone()
+    return result
+
+def updateFamily(admnno,nomem,father_fname,father_lname,father_occupation,father_dob,mother_fname,mother_lname,mother_occupation,mother_dob,have_sibling,noofsiblings):
+    cursor.execute(""" UPDATE student_family SET no_of_members=%s,father_fname=%s,father_lname=%s,father_occupation=%s,father_dob=%s,mother_fname=%s,mother_lname=%s,mother_occupation=%s,mother_dob=%s,has_siblings=%s,no_of_siblings=%s WHERE admission_no=%s""",(nomem,father_fname,father_lname,father_occupation,father_dob,mother_fname,mother_lname,mother_occupation,mother_dob,have_sibling,noofsiblings,admnno))
+    connection.commit()
+    return True
+
+def fetchStudentSiblings(admnno):
+    cursor.execute(""" SELECT * FROM student_siblings WHERE admission_no = %s ; """,(admnno,))
+    result = cursor.fetchall()
+    return result
+
+
+    
+
+
 

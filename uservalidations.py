@@ -1,7 +1,8 @@
+from random import *
 from dbactions import fetchStudentPasswdHash,changeStudentPassword,fetchStudentDashboard,userExists,fetchStudentPersonalInfo,fetchStudentAcademicInfo
 from flask_bcrypt import Bcrypt
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-
+import string
 
 
 bcrypt=Bcrypt()
@@ -58,6 +59,14 @@ class UserValidations:
             return False
         else:
             return query
+    
+    @staticmethod
+    def generateId(admnno):
+        characters = string.ascii_letters+string.digits
+        id = "".join(choice(characters) for x in range(randint(5, 5)))
+        id=admnno+id
+        return id
+
 
 
         
