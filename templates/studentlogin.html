@@ -7,16 +7,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<!-- partial:index.partial.html -->
 <div class="login-page">
   <div class="form">
-   <!-- <form class="register-form" method="POST">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>-->
     <form class="login-form" method="POST">
       {%block flashMessages%}
       {% with messages = get_flashed_messages(with_categories=true) %}

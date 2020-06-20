@@ -2,9 +2,8 @@ from flask import Flask,render_template,request,flash,session,redirect,url_for
 from flask_mail import Mail,Message
 #from xlrw import Xlrw
 from uservalidations import UserValidations
-from dbactions import fetchStudentDashboard,userExists,fetchUserByEmail,insertStudentPersonalInfo,updateStudentPersonalInfo,insertStudentAcademicInfo,updateStudentAcademicInfo,updateImportantDocuments,getStudentDocuments,fetchStudentTalents,deleteStudentTalent,insertStudentTalent,fetchStudentAchievements,deleteStudentTalent,insertStudentAchievement,deleteStudentAchievement,insertStudentExtraCourse,fetchStudentExtraCourses,deleteStudentExtraCourse,insertStudentActivitiy,fetchStudentActivities,deleteStudentExtraActivity,fetchStudentFamily,updateFamily
+from dbactions import fetchStudentDashboard,userExists,fetchUserByEmail,insertStudentPersonalInfo,updateStudentPersonalInfo,insertStudentAcademicInfo,updateStudentAcademicInfo,updateImportantDocuments,getStudentDocuments,fetchStudentTalents,deleteStudentTalent,insertStudentTalent,fetchStudentAchievements,deleteStudentTalent,insertStudentAchievement,deleteStudentAchievement,insertStudentExtraCourse,fetchStudentExtraCourses,deleteStudentExtraCourse,insertStudentActivitiy,fetchStudentActivities,deleteStudentExtraActivity,fetchStudentFamily,updateFamily,fetchStudentSiblings,deleteSibling,addSiblings,fetchClubActivities,addClubActivity,deleteClubActivity,fetchAllStudents
 import os
-
 
 app = Flask(__name__, template_folder="/Users/ganesankoundappan/Projects/CSEwebApp/templates")
 app.config["UPLOAD_FOLDER"] = "/Users/ganesankoundappan/Projects/CSEwebApp"
@@ -61,7 +60,6 @@ def logout():
         return redirect(url_for("studentLogin"))
     else:
         return redirect(url_for("studentLogin"))
-
 
 @app.route("/<username>/dashboard")
 def studentDashboard(username):
@@ -184,37 +182,56 @@ def studentExtraCurricular(username):
     if "studentuser" in session and username==session["studentuser"]["admission_no"]:
         talents=fetchStudentTalents(admnno=username)
         achievements=fetchStudentAchievements(admnno=username)
+        clubs=fetchClubActivities(admnno=username)
         if request.method=='POST' and "add-talent" in request.form:
             try:
                 insertStudentTalent(talent_id=uv.generateId(username),admnno=username,title=request.form["talent-title"],description=request.form["talent-description"])
                 return redirect(url_for("studentExtraCurricular",username=username))
             except:
                 return "<h1>Submission Error</h1>"
+
         if request.method=='POST' and "add-achievement" in request.form:
             try:
                 insertStudentAchievement(achievement_id=uv.generateId(username),admnno=username,title=request.form["achievement-title"],description=request.form["achievement-description"])
                 return redirect(url_for("studentExtraCurricular",username=username))
             except:
                 return "<h1>Submission Error</h1>"
-        return render_template("student_extra_curricular.html",username=username,talentlist=talents,achievementlist=achievements)
+        
+        if request.method=='POST' and "add-club" in request.form : 
+            try:
+                addClubActivity(id=uv.generateId(username),admnno=username,cname=request.form["club-name"],cposition=request.form["club-position"],organisedorparticipated=request.form["club-part-org"],description=request.form["club-description"])
+                return redirect(url_for("studentExtraCurricular",username=username))
+            except Exception as e:
+                return f"<h1>Submission Error : {e}</h1>"
+        return render_template("student_extra_curricular.html",username=username,talentlist=talents,achievementlist=achievements,clubs=clubs)
     else:
         return "<h1>Unauthorised Access</h1>"
+
+
 
 @app.route("/<username>/<category>/extra-curricular/<catid>/delete")
 def deleteTalent(username,category,catid):
     if "studentuser" in session and username==session["studentuser"]["admission_no"]:
         if category=="talent":
             try:
-                deleteStudentTalent(talentid=catid)
+                deleteStudentTalent(talentid=catid,admnno=username)
             except:
                 return "<h1>Invalid Request</h1>"
             return redirect(url_for("studentExtraCurricular",username=username))
         elif category=="achievement":
             try:
-                deleteStudentAchievement(achievementid=catid)
+                deleteStudentAchievement(admnno=username,achievementid=catid)
             except:
                 return "<h1>Invalid Request</h1>"
             return redirect(url_for("studentExtraCurricular",username=username))
+
+        elif category=="club":
+            try:
+                deleteClubActivity(admnno=username,id=catid)
+            except:
+                return "<h1>Invalid Request</h1>"
+            return redirect(url_for("studentExtraCurricular",username=username))
+
     else:
         return "<h1>Unauthorised Access</h1>"
 
@@ -248,13 +265,13 @@ def deleteCertificationAndEvent(username,category,id):
     if "studentuser" in session and username==session["studentuser"]["admission_no"]:
         if category=="course":
             try:
-                deleteStudentExtraCourse(id)
+                deleteStudentExtraCourse(admnno=username,courseid=id)
             except:
                 return "<h1>Invalid Request</h1>"
             return redirect(url_for("certificationsAndEvents",username=username))
         elif category=="activity":
             try:
-                deleteStudentExtraActivity(id)
+                deleteStudentExtraActivity(admnno=username,actid=id)
             except:
                 return "<h1>Invalid Request</h1>"
             return redirect(url_for("certificationsAndEvents",username=username))
@@ -265,8 +282,9 @@ def deleteCertificationAndEvent(username,category,id):
 @app.route("/<username>/Family")
 def studentFamilyDisplay(username):
     family=fetchStudentFamily(admnno=username)
+    siblings=fetchStudentSiblings(admnno=username)
     if "studentuser" in session and username==session["studentuser"]["admission_no"] and family[1]!=None:
-        return render_template("student_family_display.html",username=username,details=family)
+        return render_template("student_family_display.html",username=username,details=family,siblings=siblings)
     elif "studentuser" in session and username==session["studentuser"]["admission_no"] and family[1]==None:
         return redirect(url_for("studentFamilyEdit",username=username))
     else:
@@ -275,21 +293,53 @@ def studentFamilyDisplay(username):
 
 @app.route("/<username>/Family/edit", methods=['GET', 'POST'])
 def studentFamilyEdit(username):
-    details=fetchStudentFamily(username)
+    details=fetchStudentFamily(admnno=username)
+    siblings=fetchStudentSiblings(admnno=username)
     if "studentuser" in session and username==session["studentuser"]["admission_no"]:
         if "family-edit" in request.form and request.method =='POST':
-            #try:
-            updateFamily(admnno=username, nomem=request.form["family-mem"], father_fname=request.form["father-fname"], father_lname=request.form["father-lname"], father_occupation=request.form["father-occupation"], father_dob=request.form["father-dob"],
+            try:
+                updateFamily(admnno=username, nomem=request.form["family-mem"], father_fname=request.form["father-fname"], father_lname=request.form["father-lname"], father_occupation=request.form["father-occupation"], father_dob=request.form["father-dob"],
                          mother_fname=request.form["mother-fname"], mother_lname=request.form["mother-lname"], mother_occupation=request.form["mother-occupation"], mother_dob=request.form["mother-dob"], have_sibling=request.form["have-sibling"], noofsiblings=request.form["no-of-siblings"])
-            #except:
-            #return "<h1>Submission Error !</h1>"
+            except:
+                return "<h1>Submission Error !</h1>"
+        if "add-sibling" in request.form and request.method == 'POST' :
+            addSiblings(siblingid=uv.generateId(username),admnno=username,relation=request.form["sibling-relation"],name=request.form["sibling-name"],status=request.form["sibling-status"],age=request.form["sibling-age"],sona_associated=request.form["sibling-sona"],description=request.form["sibling-description"])
             return redirect(url_for("studentFamilyDisplay",username=username))
-        return(render_template("student_family_edit.html",username=username,family=details))
+        return(render_template("student_family_edit.html",username=username,family=details,siblings=siblings))
     else:
         return "<h1>Access Denied</h1>"
 
-    
+@app.route("/<username>/family/sibling/<id>/delete")
+def siblingDelete(username,id):
+    if "studentuser" in session and username == session["studentuser"]["admission_no"]:
+        try:
+            deleteSibling(id=id,admnno=username)
+        except:
+            pass
+        return redirect(url_for("studentFamilyEdit",username=username))
+    else:
+        return "<h1>Invalid request ! </h1>"
 
+@app.route("/faculty",methods=['GET','POST'])
+def facultylogin():
+    if request.method=="POST" : 
+        authenticate=uv.authenticateFaculty(username=request.form["username"],password=request.form["password"])
+        if authenticate==True:
+            session["facultylogin"]= True
+            return "<h1>Success</h1>"
+        else:
+            flash(authenticate,"danger")
+    return render_template("facultyLogin.html")
+
+
+@app.route("/display/student/all")
+def ddisplayAllStudents():
+    return render_template("displayAll_students.html",students=fetchAllStudents())
+
+
+@app.route("/display/student/<admnno>")
+def displayStudent(admnno):
+    return f"<h1>{admnno}"
 
 @app.route("/<username>/ResetPassword",methods=['GET','POST'])
 def passwordReset(username):
@@ -301,8 +351,7 @@ def passwordReset(username):
             if isinstance(auth,dict):
                 msg,cat=uv.studentPasswordReset(session["studentuser"]["admission_no"],request.form["newpassword"])
                 flash(msg,cat)
-                return redirect(url_for("studentDashboard",username=session["studentuser"]["admission_no"]))
-            
+                return redirect(url_for("studentDashboard",username=session["studentuser"]["admission_no"]))            
             else:
                 flash(auth,"danger")
                 return render_template("studentpasswordreset.html")

@@ -23,5 +23,17 @@
     <br>
     <h5>No of Siblings : {{details[11]}}</h5>
     <h2><a href="/{{username}}/Family/edit">EDIT</a></h2>
+    <br>
+    <h1>Siblings</h1>
+    {%for sibling in siblings%}
+    <br>
+    <h5>Relation :{{sibling[2]}}</h5>
+    <h5>Name :{{sibling[3]}} </h5>
+    <h5>status :{{sibling[4]}}</h5>
+    <h5>age : {{sibling[5]}}</h5>
+    <h5>Associated with Sona :{{sibling[6]}} </h5>
+    <h5>description :{{sibling[7]}} </h5>
+    <br>
+    {%endfor%}
 </body>
 </html>

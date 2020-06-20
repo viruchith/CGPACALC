@@ -35,7 +35,7 @@
         <label for="">DOB</label>
         <input type="text" name="mother-dob" value="{{family[9]}}" id="" required>
         <br>
-            <div id="has-siblings">{{family[10]}}</div>
+        <div id="has-siblings">{{family[10]}}</div>
         <label for="">Have siblings : {{family[10]}} </label>
         <select name="have-sibling" id="have-sibling" required>
             <option value="true" id="have-sibling-true">Yes</option>
@@ -47,10 +47,24 @@
         <br>
         <button type="submit" class="btn btn-primary" name="family-edit">Update</button>
     </form>
+    <h1>Siblings</h1>
+    {%for sibling in siblings%}
+    <br>
+    <h5>Relation :{{sibling[2]}}</h5>
+    <h5>Name :{{sibling[3]}} </h5>
+    <h5>status :{{sibling[4]}}</h5>
+    <h5>age : {{sibling[5]}}</h5>
+    <h5>Associated with Sona :{{sibling[6]}} </h5>
+    <h5>description :{{sibling[7]}} </h5>
+    <h6><a href="/{{username}}/family/sibling/{{sibling[0]}}/delete" onclick="return confirm('Are you sure want to delete this ?');">DELETE</a></h6>
+    <br>
+    {%endfor%}
     <div id="sibling-form">
+        <br>
+        <h1>Add sibling : </h1>
         <form action="" method="post">
             <label for="">Relation : </label>
-            <select name="sibling-realtion" id="">
+            <select name="sibling-relation" id="">
                 <option value="Elder Brother">Elder Brother</option>
                 <option value="Elder Sister">Elder Sister</option>
                 <option value="Younger Brother">Younger Brother</option>
@@ -70,7 +84,7 @@
             </select>
             <br>
             <label for="">Age : </label>
-            <input type="number" name="age" id="">
+            <input type="number" name="sibling-age" id="">
             <br>
             <label for="">Associated with Sona group of instituitions : </label>
             <select name="sibling-sona" id="">

@@ -281,8 +281,8 @@ def fetchStudentTalents(admnno):
     result=cursor.fetchall()
     return result
 
-def deleteStudentTalent(talentid):
-    cursor.execute(""" DELETE FROM student_talents WHERE talent_id = %s """,(talentid,))
+def deleteStudentTalent(admnno,talentid):
+    cursor.execute(""" DELETE FROM student_talents WHERE talent_id = %s AND admission_no = %s """,(talentid,admnno))
     connection.commit()
     return True
 
@@ -296,8 +296,8 @@ def fetchStudentAchievements(admnno):
     result=cursor.fetchall()
     return result
 
-def deleteStudentAchievement(achievementid):
-    cursor.execute(""" DELETE FROM student_achievements WHERE achievement_id = %s """,(achievementid,))
+def deleteStudentAchievement(admnno,achievementid):
+    cursor.execute(""" DELETE FROM student_achievements WHERE achievement_id = %s AND admission_no = %s """,(achievementid,admnno))
     connection.commit()
     return True
 
@@ -311,8 +311,8 @@ def fetchStudentExtraCourses(admnno):
     result=cursor.fetchall()
     return result
 
-def deleteStudentExtraCourse(courseid):
-    cursor.execute(""" DELETE FROM student_extra_courses WHERE course_id = %s """,(courseid,))
+def deleteStudentExtraCourse(courseid,admnno):
+    cursor.execute(""" DELETE FROM student_extra_courses WHERE course_id = %s  AND admission_no = %s""",(courseid,admnno))
     connection.commit()
     return True
 
@@ -326,8 +326,8 @@ def fetchStudentActivities(admnno):
     result = cursor.fetchall()
     return result
 
-def deleteStudentExtraActivity(actid):
-    cursor.execute(""" DELETE FROM student_event_activities WHERE certid = %s """,(actid,))
+def deleteStudentExtraActivity(admnno,actid):
+    cursor.execute(""" DELETE FROM student_event_activities WHERE certid = %s AND admission_no = %s """,(actid,admnno))
     connection.commit()
     return True
 
@@ -346,8 +346,46 @@ def fetchStudentSiblings(admnno):
     result = cursor.fetchall()
     return result
 
+def addSiblings(siblingid,admnno,relation,name,status,age,sona_associated,description):
+    cursor.execute(""" INSERT INTO student_siblings (sibling_id,admission_no,relation,name,status,age,associated_with_sona,description) VALUES(%s,%s,%s,%s,%s,%s,%s,%s) """,(siblingid,admnno,relation,name,status,age,sona_associated,description))
+    connection.commit()
+    return True
 
-    
+def deleteSibling(id,admnno):
+    cursor.execute(""" DELETE FROM student_siblings WHERE sibling_id = %s AND admission_no=%s """,(id,admnno))
+    connection.commit()
+    return True
+
+def addClubActivity(id,admnno,cname,cposition,organisedorparticipated,description):
+    cursor.execute(""" INSERT INTO student_clubs (id,admission_no,club_name,club_position,organised_participated,description) VALUES(%s,%s,%s,%s,%s,%s)  """,(id,admnno,cname,cposition,organisedorparticipated,description))
+    connection.commit()
+    return True
+
+def fetchClubActivities(admnno):
+    cursor.execute(""" SELECT * FROM student_clubs WHERE admission_no = %s """,(admnno,))
+    result = cursor.fetchall()
+    return result
+
+def deleteClubActivity(admnno,id):
+    cursor.execute(""" DELETE FROM student_clubs WHERE admission_no = %s AND id = %s """,(admnno,id))
+    connection.commit()
+    return True
+
+def fetchFacultyCredentials(username):
+    details={}
+    cursor.execute("""SELECT username,password FROM faculty_credentials WHERE username = %s""",(username,))
+    result=cursor.fetchone()
+    if result!=None:
+        details["username"]=result[0]
+        details["password"]=result[1]
+        return details  
+    else:
+      return False
+
+def fetchAllStudents():
+    cursor.execute(""" SELECT student_name,admission_no,mobile_no FROM student_primary_credentials """)
+    result=cursor.fetchall()
+    return result
 
 
 

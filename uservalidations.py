@@ -1,5 +1,5 @@
 from random import *
-from dbactions import fetchStudentPasswdHash,changeStudentPassword,fetchStudentDashboard,userExists,fetchStudentPersonalInfo,fetchStudentAcademicInfo
+from dbactions import fetchStudentPasswdHash,changeStudentPassword,fetchStudentDashboard,userExists,fetchStudentPersonalInfo,fetchStudentAcademicInfo,fetchFacultyCredentials
 from flask_bcrypt import Bcrypt
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 import string
@@ -66,6 +66,17 @@ class UserValidations:
         id = "".join(choice(characters) for x in range(randint(5, 5)))
         id=admnno+id
         return id
+    
+    @staticmethod
+    def authenticateFaculty(username,password):
+        if fetchFacultyCredentials(username=username):
+            fetched=fetchFacultyCredentials(username=username)
+            if username==fetched["username"] and password==fetched["password"]:
+                return True
+            else:
+                return "Invalid Password !"
+        else:
+            return "User Doesnot Exist ! "
 
 
 

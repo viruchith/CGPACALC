@@ -35,8 +35,7 @@
     <h4>Title : {{i[2]}}</h4>
     <br>
     <h4>Description : {{i[3]}}</h4>
-    <a href="/{{i[1]}}/achievement/extra-curricular/{{i[0]}}/delete"
-        onclick="return confirm('Are you sure want to delete this ?');">
+    <a href="/{{i[1]}}/achievement/extra-curricular/{{i[0]}}/delete" onclick="return confirm('Are you sure want to delete this ?');">
         <h5>DELETE</h5>
     </a>
     <br>
@@ -53,5 +52,46 @@
         <textarea name="achievement-description" id="" cols="30" rows="10"></textarea>
         <button type="submit" name="add-achievement" class="btn btn-primary">Submit Achievement</button>
  </form>
+
+ {%for i in clubs%}
+ <h4>Club name : {{i[2]}}</h4>
+ <h4>Position : {{i[3]}}</h4>
+ <h4>Role : {{i[4]}}</h4>
+ <h4>Description : {{i[5]}}</h4>
+<a href="/{{i[1]}}/club/extra-curricular/{{i[0]}}/delete" onclick="return confirm('Are you sure want to delete this ?');">
+<h5>DELETE</h5>
+ {%endfor%}
+<br>
+    <form action="" method="post" onsubmit="">
+        <label for="">
+            <h4>Club name : </h4>
+        </label>
+        <select name="club-name" id="">
+            <option value="Language">Language</option>
+            <option value="Tremors">Tremors</option>
+            <option value="Tamil Mandram">Tamil Mandram</option>
+        </select>
+        <label for="">
+            <h4>Position</h4>
+        </label>
+        <select name="club-position" id="">
+            <option value="Leader">Leader</option>
+            <option value="Secretary">Secretary</option>
+            <option value="Member">Member</option>
+        </select>
+        <label for="">
+            <h4>Participated / Organized : </h4>
+        </label>
+        <select name="club-part-org" id="">
+            <option value="Participant">Participant</option>
+            <option value="Organizer">Organizer</option>
+        </select>
+        <label for="">
+            <h4>Description : </h4>
+        </label>
+        <textarea name="club-description" id="" cols="30" rows="10"></textarea>
+        <button type="submit" name="add-club" class="btn btn-primary">Submit Club Activity</button>
+    </form>
+
 </body>
 </html>
