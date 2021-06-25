@@ -1,0 +1,58 @@
+[
+  {
+    "id": "CSE",
+    "name": "Computer Science and Engineering",
+    "sem1": {
+        "id": 1,
+        "subjects": [
+          {
+            "code": "U19ENG101B",
+            "name": "Englishfor Engineers–I",
+            "credits": 2
+          },
+          {
+            "code": "U19MAT102A",
+            "name": "Linear Algebra and Calculus",
+            "credits": 4
+          },
+          {
+            "code": "U19PHY103B",
+            "name": "Engineering Physics",
+            "credits": 3
+          },
+          {
+            "code": "U19CHE104B",
+            "name": "Applied Chemistry-I",
+            "credits": 3
+          },
+          {
+            "code": "U19PPR105",
+            "name": "Problem Solving UsingPython Programming",
+            "credits": 3
+          },
+          {
+            "code": "U19BEE106A",
+            "name": "Basic Electrical and Electronics Engineering",
+            "credits": 3
+          },
+          {
+            "code": "U19PCL108B",
+            "name": "Physics and Chemistry Laboratory",
+            "credits": 1
+          },
+
+          {
+            "code": "U19BEEL113A",
+            "name": "Basic Electrical and Electronics Engineering Laboratory",
+            "credits": 1
+          },
+          {
+            "code": "U19PPL111",
+            "name": "Python Programming Laboratory",
+            "credits": 1
+          }
+        ]
+      },
+    "img": ""
+  }
+]
