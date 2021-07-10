@@ -12,8 +12,8 @@
 /build
 
 # firebase
-/.firebase
-/.firebaserc
+.firebase
+.firebaserc
 firebase-debug.log
 firebase.json
 # misc
