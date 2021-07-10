@@ -22,6 +22,18 @@ i{
   margin-top: 3rem;
 }
 
+.inner-container{
+  margin-inline:2rem;
+  margin-block-start: 10rem;
+  margin-block-end: 5rem;
+  background-color: #ffebcd;
+  color: #000000;
+  padding:3rem;
+  background-color: #ffebcd;
+  border-radius:2rem;
+  border: 0.5rem ridge #ffd700;
+}
+
 #form-container{
   margin-block-start: 7rem;
   margin-block-end:3rem;

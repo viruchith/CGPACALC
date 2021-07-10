@@ -51,7 +51,7 @@ function NavBar() {
                   })}
                 </ul>
               </div>
-              <Link className="nav-link" to="/about">
+              <Link className="nav-link active" to="/about">
                 About
               </Link>
             </div>
