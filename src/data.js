@@ -919,13 +919,8 @@ export const departments_data = [
           credits: 3,
         },
         {
-          code: "U19CE903",
-          name: "Professional Elective-Elements of Building Planning",
-          credits: 3,
-        },
-        {
-          code: "U19CE904",
-          name: "Professional Elective-Energy Efficiency and Green Building Professional",
+          code: "U19CE903 / U19CE904",
+          name: "Professional Elective-Elements of Building Planning / Energy Efficiency and Green Building Professional",
           credits: 3,
         },
         {

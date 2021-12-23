@@ -1,14 +1,30 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef,useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { departments_data } from "../data";
 
 function GpaCalculatePage() {
   const { deptid, semid } = useParams();
+  const [totalCreditsDisp, setTotalCreditsDisp] = useState(0);
   const department = departments_data.find((dept) => dept.id === deptid);
   const [GPA,setGPA] = useState(undefined);
   const gpaForm = useRef();
+
+  const calculateCredits = async()=>{
+    const semData = department["sem" + semid];
+    if(semData){
+    let totalCredits = 0;
+    semData.subjects.map((subject)=>totalCredits+=subject.credits);
+    setTotalCreditsDisp(totalCredits);
+    }
+    
+  };
+
+  useEffect(() => {
+    calculateCredits();
+  }, [])
+
   const gradeToPoints = (grade) => {
     if (grade === "O") {
       return 10;
@@ -70,9 +86,9 @@ function GpaCalculatePage() {
                   {semData.subjects.map((sub) => {
                     return (
                       <li id="form-inner-container" key={sub.code}>
-                        <div className="mb-3 col-sm-6 col-md-4 animate__animated animate__wobble">
+                        <div className="mb-3 col-sm-6 col-md-6 animate__animated animate__wobble">
                           <label className="mb-3" htmlFor="">
-                            {sub.name} (<strong>{sub.code}</strong>)
+                            <p>{sub.name} (<strong>{sub.code}</strong>) [ Credits : <strong>{sub.credits}</strong> ]</p>
                           </label>
                           <select
                             className="form-select"
@@ -94,6 +110,9 @@ function GpaCalculatePage() {
                     );
                   })}
                 </ol>
+                <div className="d-flex justify-content-center">
+                <div className="badge bg-dark text-light">Total Credits : {totalCreditsDisp}</div>
+                </div>
                 {GPA && (
                   <div className="d-flex mt-3 justify-content-center">
                     <h3>GPA : <strong>{GPA}</strong></h3>
