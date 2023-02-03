@@ -15,7 +15,7 @@ function AboutPage() {
               2019 Regulation syllabus.
             </p>
             <code>Source code - </code>
-            <Link to="https://github.com/viruchith/CGPACALC">
+            <Link to={{pathname:"https://github.com/viruchith/CGPACALC"}} target="_blank">
               <i className="bi-github"></i>.
             </Link>
             <br/><br/>

@@ -189,6 +189,143 @@ export const departments_data = [
         },
       ],
     },
+    sem5: {
+      subjects: [
+        {
+          code: "U19CS501",
+          name: "Computer Networks",
+          credits: 3,
+        },
+        {
+          code: "U19CS502",
+          name: "Software Engineering",
+          credits: 3,
+        },
+        {
+          code: "U19CS503",
+          name: "Theory of Computation",
+          credits: 3,
+        },
+        {
+          code: "U19CS509",
+          name: "Embedded System Design",
+          credits: 3,
+        },
+        {
+          code: "noc21-cs73",
+          name: "Elective NPTEL - Software Testing",
+          credits: 3,
+        },
+        {
+          code: "U19CS901|U19CS902",
+          name: "Elective Software Project Management / Elective- Agile Methodologies",
+          credits: 3,
+        },
+        {
+          code: "U19CS504",
+          name: "Computer Networks Laboratory ",
+          credits: 2,
+        },
+        {
+          code: "U19CS505",
+          name: "Software Development Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE501",
+          name: "Soft Skills and Aptitude -III ",
+          credits: 1,
+        },
+      ],
+    },
+    sem6: {
+      subjects: [
+        {
+          code: "PE1",
+          name: "Professional Elective - I",
+          credits: 3,
+        },
+        {
+          code: "PE2",
+          name: "Professional Elective - II",
+          credits: 3,
+        },
+        {
+          code: "U19CS601",
+          name: "Principles of Compiler Design",
+          credits: 3,
+        },
+        {
+          code: "U19CS603",
+          name: "Artificial Intelligence",
+          credits: 3,
+        },
+        {
+          code: "U19CS602",
+          name: "Full Stack Development",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19CS604",
+          name: "Compiler Design Laboratory",
+          credits: 2,
+        },
+        {
+          code: "U19CS605",
+          name: "Artificial Intelligence Laboratory",
+          credits: 2,
+        },
+        {
+          code: "U19GE601",
+          name: "Soft Skills and Aptitude – IV",
+          credits: 1,
+        },
+      ],
+    },
+    sem7: {
+      subjects: [
+        {
+          code: "U19CS701",
+          name: "Blockchain Technologies",
+          credits: 3,
+        },
+        {
+          code: "U19CS702",
+          name: "Cryptography",
+          credits: 3,
+        },
+        {
+          code: "U19CS703",
+          name: "Internet of Things",
+          credits: 3,
+        },
+        {
+          code: "U19CS925|U19CS934",
+          name: "Professional Elective I : Web Development / Cyber Law and Ethics",
+          credits: 3,
+        },
+        {
+          code: "U19GE702",
+          name: "Professional Elective II : Professional Readiness for Innovation Employability and Entrepreneurship",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19CS704",
+          name: "Internet of Things Laboratory",
+          credits: 2,
+        },
+      ],
+    },
   },
 
   {
@@ -371,6 +508,106 @@ export const departments_data = [
         {
           code: "U19GE401",
           name: "Soft Skills and Aptitude-II",
+          credits: 1,
+        },
+      ],
+    },
+
+    sem5: {
+      subjects: [
+        {
+          code: "U19IT501",
+          name: "Computer Networks",
+          credits: 3,
+        },
+        {
+          code: "U19IT502",
+          name: "Database Management Systems",
+          credits: 3,
+        },
+        {
+          code: "U19IT503",
+          name: "Theory of Computation",
+          credits: 4,
+        },
+        {
+          code: "U19IT504",
+          name: "Software Engineering",
+          credits: 3,
+        },
+        {
+          code: "noc21-cs63",
+          name: "Elective- NPTEL Introduction to internet of things",
+          credits: 3,
+        },
+        {
+          code: "U19IT505",
+          name: "Database Management Laboratory",
+          credits: 2,
+        },
+        {
+          code: "U19IT506",
+          name: "Mobile Application Development Laboratory",
+          credits: 2,
+        },
+        {
+          code: "U19IT507",
+          name: "Internet Of Things Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE501",
+          name: "Soft Skills and Aptitude – III",
+          credits: 1,
+        },
+      ],
+    },
+    sem6: {
+      subjects: [
+        {
+          code: "U19IT601",
+          name: "Full Stack Development",
+          credits: 3,
+        },
+
+        {
+          code: "U19IT602",
+          name: "Machine Learning",
+          credits: 3,
+        },
+        {
+          code: "PE1",
+          name: "Professional Elective - I",
+          credits: 3,
+        },
+        {
+          code: "PE2",
+          name: "Professional Elective - II",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19IT603",
+          name: "Full stack Development Laboratory",
+          credits: 2,
+        },
+        {
+          code: "U19IT604",
+          name: "Software Design and Testing Laboratory",
+          credits: 2,
+        },
+        {
+          code: "U19IT605",
+          name: "Machine Learning Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE601",
+          name: "Soft Skills and Aptitude - IV",
           credits: 1,
         },
       ],
@@ -570,6 +807,104 @@ export const departments_data = [
         },
       ],
     },
+    sem5: {
+      subjects: [
+        {
+          code: "U19EE501",
+          name: "Generation, Transmission and Distribution Systems",
+          credits: 3,
+        },
+        {
+          code: "U19EE502",
+          name: "Control Systems",
+          credits: 3,
+        },
+        {
+          code: "U19EE503",
+          name: "Embedded Systems and IoT",
+          credits: 3,
+        },
+        {
+          code: "U19EE504",
+          name: "Electrical Machine Design",
+          credits: 3,
+        },
+        {
+          code: "U19EE505",
+          name: "Total Quality Management in Electrical Industries",
+          credits: 3,
+        },
+        {
+          code: "noc21-ge23",
+          name: "Solar Energy Engineering and Technology",
+          credits: 3,
+        },
+        {
+          code: "U19EE506",
+          name: "Instrumentation and Control Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19EE507",
+          name: "Embedded Systems and IoT Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE501",
+          name: "Soft Skills and Aptitude – III",
+          credits: 1,
+        },
+      ],
+    },
+    sem6: {
+      subjects: [
+        {
+          code: "U19EE601",
+          name: "Power System Analysis",
+          credits: 4,
+        },
+        {
+          code: "U19EE602",
+          name: "Power System Protection and Switchgear",
+          credits: 3,
+        },
+        {
+          code: "U19EE603",
+          name: "Special Electrical Machines and their Controllers",
+          credits: 3,
+        },
+        {
+          code: "U19EE918",
+          name: "Elective - Renewable Energy Sources",
+          credits: 3,
+        },
+        {
+          code: "U19EE919",
+          name: "Elective - Power Quality Engineering",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19EE604",
+          name: "Mini Project",
+          credits: 3,
+        },
+        {
+          code: "U19ENG601",
+          name: "Communication Skills Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE601",
+          name: "Soft Skills and Aptitude - IV",
+          credits: 1,
+        },
+      ],
+    },
   },
   {
     id: "ECE",
@@ -760,6 +1095,114 @@ export const departments_data = [
         },
       ],
     },
+    sem5: {
+      subjects: [
+        {
+          code: "U19EC501",
+          name: "Microprocessors and Microcontroller",
+          credits: 3,
+        },
+        {
+          code: "U19EC502",
+          name: "Control Systems",
+          credits: 3,
+        },
+        {
+          code: "U19EC503",
+          name: "Transmission Lines and Waveguides",
+          credits: 3,
+        },
+        {
+          code: "U19EC504",
+          name: "Digital Communication",
+          credits: 3,
+        },
+        {
+          code: "U19EC505",
+          name: "VLSI Design",
+          credits: 3,
+        },
+        {
+          code: "PE",
+          name: "Elective – NPTEL Course",
+          credits: 3,
+        },
+        {
+          code: "U19EC506",
+          name: "Microprocessors and Microcontroller laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19EC507",
+          name: "Communication Systems laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19EC508",
+          name: "VLSI Design laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE501",
+          name: "Soft Skills and Aptitude - III",
+          credits: 1,
+        },
+      ],
+    },
+    sem6: {
+      subjects: [
+        {
+          code: "U19EC601",
+          name: "Antenna and Wave Propagation",
+          credits: 3,
+        },
+        {
+          code: "U19EC602",
+          name: "Digital Image Processing",
+          credits: 3,
+        },
+        {
+          code: "U19EC603",
+          name: "Embedded Systems",
+          credits: 3,
+        },
+        {
+          code: "PE1",
+          name: "Professional Elective - I",
+          credits: 3,
+        },
+        {
+          code: "PE2",
+          name: "Professional Elective - II",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19EC604",
+          name: "Digital Image Processing laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19EC605",
+          name: "Embedded Systems laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19EC606",
+          name: "Mini Project",
+          credits: 1,
+        },
+        {
+          code: "U19GE601",
+          name: "Soft Skills and Aptitude - IV",
+          credits: 1,
+        },
+      ],
+    },
   },
   {
     id: "CE",
@@ -919,7 +1362,7 @@ export const departments_data = [
           credits: 3,
         },
         {
-          code: "U19CE903 / U19CE904",
+          code: "U19CE903|U19CE904",
           name: "Professional Elective-Elements of Building Planning / Energy Efficiency and Green Building Professional",
           credits: 3,
         },
@@ -941,6 +1384,109 @@ export const departments_data = [
         {
           code: "U19GE401",
           name: "Soft Skills and Aptitude-II",
+          credits: 1,
+        },
+      ],
+    },
+    sem5: {
+      subjects: [
+        {
+          code: "U19CE501",
+          name: "Structural Analysis-I ",
+          credits: 3,
+        },
+        {
+          code: "U19CE502",
+          name: "Soil Mechanics ",
+          credits: 3,
+        },
+        {
+          code: "U19CE503",
+          name: "Design of Reinforced Concrete Elements ",
+          credits: 3,
+        },
+        {
+          code: "U19CE907",
+          name: "Elective - Architecture and Town Planning",
+          credits: 3,
+        },
+        {
+          code: "noc21-ce71",
+          name: "Elective -Introduction to Engineering Seismology",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19CE504",
+          name: "Survey Camp",
+          credits: 1,
+        },
+        {
+          code: "U19CE505",
+          name: "Computer Aided Civil Engineering Drawing",
+          credits: 1,
+        },
+        {
+          code: "U19CE506",
+          name: "Soil Mechanics Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE501",
+          name: "Soft Skills and Aptitude-III",
+          credits: 1,
+        },
+      ],
+    },
+    sem6: {
+      subjects: [
+        {
+          code: "U19CE601",
+          name: "Water Resources and Irrigation Engineering",
+          credits: 3,
+        },
+        {
+          code: "U19CE602",
+          name: "Structural Analysis-II",
+          credits: 3,
+        },
+        {
+          code: "U19CE603",
+          name: "Foundation Engineering",
+          credits: 3,
+        },
+        {
+          code: "U19CE604",
+          name: "Limit State Design of Steel Structures",
+          credits: 4,
+        },
+        {
+          code: "PE1",
+          name: "Professional Elective - I",
+          credits: 3,
+        },
+        {
+          code: "PE2",
+          name: "Professional Elective - II",
+          credits: 3,
+        },
+        {
+          code: "U19CE605",
+          name: "Civil Engineering Software Applications Laboratory",
+          credits: 2,
+        },
+        {
+          code: "U19CE606",
+          name: "Innovative Projects",
+          credits: 1,
+        },
+        {
+          code: "U19GE602",
+          name: "Professional Development Skills",
           credits: 1,
         },
       ],
@@ -1126,6 +1672,109 @@ export const departments_data = [
         {
           code: "U19GE401",
           name: "Soft Skills and Aptitude -II",
+          credits: 1,
+        },
+      ],
+    },
+    sem5: {
+      subjects: [
+        {
+          code: "U19ME501",
+          name: "Heat and Mass Transfer",
+          credits: 3,
+        },
+        {
+          code: "U19ME502",
+          name: "Dynamics of Machinery",
+          credits: 3,
+        },
+        {
+          code: "U19ME503",
+          name: "Computer Aided Design and Analysis",
+          credits: 3,
+        },
+        {
+          code: "noc21-me115",
+          name: "Elective NPTEL- Fundamentals of Additive Manufacturing Technologies",
+          credits: 3,
+        },
+        {
+          code: "noc21-cs63",
+          name: "Elective NPTEL- Introduction to Internet of Things",
+          credits: 3,
+        },
+        {
+          code: "U19ME901",
+          name: "Elective- Machine Learning with Python Programming",
+          credits: 3,
+        },
+        {
+          code: "U19ME504",
+          name: "Heat and Mass Transfer Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19ME505",
+          name: "Dynamics of Machinery Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19ME506",
+          name: "Computer Aided Design and Analysis Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE501",
+          name: "Soft Skills and Aptitude - III",
+          credits: 1,
+        },
+      ],
+    },
+    sem6: {
+      subjects: [
+        {
+          code: "U19ME601",
+          name: "Design of Machine Elements",
+          credits: 4,
+        },
+        {
+          code: "U19ME602",
+          name: "Mechatronics System Design",
+          credits: 3,
+        },
+        {
+          code: "U19ME603",
+          name: "Operations Research",
+          credits: 4,
+        },
+        {
+          code: "PE1",
+          name: "Professional Elective - I",
+          credits: 3,
+        },
+        {
+          code: "PE2",
+          name: "Professional Elective - II",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19ME604",
+          name: "Mechatronics and Simulation Laboratory",
+          credits: 2,
+        },
+        {
+          code: "U19ME605",
+          name: "Computer Aided Manufacturing and Measurements Laboratory",
+          credits: 2,
+        },
+        {
+          code: "U19GE601",
+          name: "Soft Skills and Aptitude - IV",
           credits: 1,
         },
       ],
@@ -1325,6 +1974,119 @@ export const departments_data = [
         },
       ],
     },
+    sem5: {
+      subjects: [
+        {
+          code: "U19FT501",
+          name: "Apparel Manufacturing",
+          credits: 3,
+        },
+        {
+          code: "U19FT502",
+          name: "Apparel Production Planning and Control",
+          credits: 3,
+        },
+        {
+          code: "U19FT503",
+          name: "Apparel Merchandising (Lab Integrated)",
+          credits: 4,
+        },
+        {
+          code: "U19FT504",
+          name: "Functional Garments",
+          credits: 3,
+        },
+        {
+          code: "noc21-mg88",
+          name: "Elective- (NPTEL) - Principles of management",
+          credits: 3,
+        },
+        {
+          code: "U19FT910",
+          name: "Elective – Home Textiles",
+          credits: 3,
+        },
+        {
+          code: "U19FT505",
+          name: "Apparel Manufacturing Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19FT506",
+          name: "Digital Pattern Development and Marker Planning Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19FT507",
+          name: "Mini Project-II",
+          credits: 1,
+        },
+        {
+          code: "U19FT401",
+          name: "Pattern Making and Garment Construction-II",
+          credits: 1,
+        },
+        {
+          code: "U19FT508",
+          name: "In-Plant Training",
+          credits: 1,
+        },
+      ],
+    },
+    sem6: {
+      subjects: [
+        {
+          code: "U19FT601",
+          name: "Clothing Size, Fit and Comfort",
+          credits: 3,
+        },
+        {
+          code: "U19FT602",
+          name: "Fashion Visual Merchandising",
+          credits: 3,
+        },
+        {
+          code: "U19FT603",
+          name: "Industrial Engineering in Garment Production",
+          credits: 3,
+        },
+        {
+          code: "PE1",
+          name: "Professional Elective - I",
+          credits: 3,
+        },
+        {
+          code: "PE2",
+          name: "Professional Elective - II",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19FT604",
+          name: "3D Virtual Fit analysis Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19FT605",
+          name: "Industrial Engineering in Garment Production Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE601",
+          name: "Soft Skills and Aptitude – IV",
+          credits: 1,
+        },
+        {
+          code: "U19FT606",
+          name: "Mini Project - III",
+          credits: 1,
+        },
+      ],
+    },
   },
 
   {
@@ -1516,6 +2278,115 @@ export const departments_data = [
         },
       ],
     },
+    sem5: {
+      subjects: [
+        {
+          code: "U19BM501",
+          name: "Diagnostic and Therapeutic Equipments I",
+          credits: 3,
+        },
+        {
+          code: "U19EC510",
+          name: "Digital Signal Processing",
+          credits: 3,
+        },
+        {
+          code: "U19BM502",
+          name: "Pathology and Microbiology",
+          credits: 3,
+        },
+        {
+          code: "U19BM503",
+          name: "Biomechanics",
+          credits: 3,
+        },
+        {
+          code: "U19EC511",
+          name: "Microprocessors and Embedded System Design",
+          credits: 3,
+        },
+        {
+          code: "noc21-ee107",
+          name: "Elective-NPTEL Course : Electrical Measurement and Electronic Instruments",
+          credits: 3,
+        },
+        {
+          code: "U19EC512",
+          name: "Digital Signal Processing Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19BEC513",
+          name: "Microprocessors and Embedded System Design Laboratory",
+          credits: 1,
+        },
+
+        {
+          code: "U19BM504",
+          name: "Pathology and Microbiology Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE501",
+          name: "Soft Skills and Aptitude – III",
+          credits: 1,
+        },
+      ],
+    },
+    sem6: {
+      subjects: [
+        {
+          code: "U19BM601",
+          name: "Diagnostic and Therapeutic Equipment II",
+          credits: 3,
+        },
+        {
+          code: "U19BM602",
+          name: "Radiological Equipment",
+          credits: 3,
+        },
+        {
+          code: "U19BM603",
+          name: "Biosensors and Transducers",
+          credits: 3,
+        },
+        {
+          code: "PE1",
+          name: "Professional Elective - I",
+          credits: 3,
+        },
+        {
+          code: "PE2",
+          name: "Professional Elective - II",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19BM604",
+          name: "Diagnostic and Therapeutic Equipment Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19BM605",
+          name: "Biosensors and Transducers LaboratoryI",
+          credits: 1,
+        },
+        {
+          code: "U19BM606",
+          name: "Summer Internship / Summer Project",
+          credits: 1,
+        },
+        {
+          code: "U19GE601",
+          name: "Soft Skills and Aptitude – IV",
+          credits: 1,
+        },
+      ],
+    },
   },
 
   {
@@ -1699,6 +2570,109 @@ export const departments_data = [
         {
           code: "U19GE401",
           name: "Soft Skills and Aptitude-II",
+          credits: 1,
+        },
+      ],
+    },
+    sem5: {
+      subjects: [
+        {
+          code: "U19MC501",
+          name: "CAD/CAM",
+          credits: 3,
+        },
+        {
+          code: "U19MC502",
+          name: "Theory of machines",
+          credits: 3,
+        },
+        {
+          code: "U19MC503",
+          name: "Data structure using python",
+          credits: 4,
+        },
+        {
+          code: "U19MC504",
+          name: "Industrial Automation",
+          credits: 3,
+        },
+        {
+          code: "noc21-ee67",
+          name: "Elective- (NPTEL course) Control Engineering",
+          credits: 3,
+        },
+        {
+          code: "U19MC505",
+          name: "CAD/CAM Laboratory",
+          credits: 1.5,
+        },
+        {
+          code: "U19MC506",
+          name: "Industrial Automation Laboratory",
+          credits: 1.5,
+        },
+        {
+          code: "U19MC507",
+          name: "Mini Project-I",
+          credits: 1,
+        },
+        {
+          code: "U19GE501",
+          name: "Soft Skill and Aptitude – III",
+          credits: 1,
+        },
+      ],
+    },
+    sem6: {
+      subjects: [
+        {
+          code: "U19MC601",
+          name: "Artificial Intelligence and Machine Learning",
+          credits: 3,
+        },
+        {
+          code: "U19MC602",
+          name: "Image Processing and Computer Vision",
+          credits: 3,
+        },
+        {
+          code: "U19MC603",
+          name: "Robotics",
+          credits: 3,
+        },
+        {
+          code: "PE1",
+          name: "Professional Elective - I",
+          credits: 3,
+        },
+        {
+          code: "PE2",
+          name: "Professional Elective - II",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19MC604",
+          name: "Image Processing Laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19MC605",
+          name: "3D Modelling and Analysis laboratory",
+          credits: 1,
+        },
+        {
+          code: "U19GE601",
+          name: "Soft Skill and Aptitude – IV",
+          credits: 1,
+        },
+        {
+          code: "U19MC606",
+          name: "Mini Project-II",
           credits: 1,
         },
       ],

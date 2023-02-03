@@ -23,7 +23,7 @@ function GpaCalculatePage() {
 
   useEffect(() => {
     calculateCredits();
-  }, [])
+  })
 
   const gradeToPoints = (grade) => {
     if (grade === "O") {
