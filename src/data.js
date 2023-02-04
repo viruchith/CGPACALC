@@ -612,6 +612,50 @@ export const departments_data = [
         },
       ],
     },
+    sem7: {
+      subjects: [
+        {
+          code: "U19GE701",
+          name: "Professional Ethics and Human Values",
+          credits: 3,
+        },
+        {
+          code: "U19IT701",
+          name: "Cryptography and Network Security",
+          credits: 3,
+        },
+        {
+          code: "U19IT918",
+          name: "Professional Elective – Intellectual Property Rights",
+          credits: 3,
+        },
+        {
+          code: "U19IT905|U19IT912",
+          name: "Professional Elective – Information Security / Total Quality Management",
+          credits: 3,
+        },
+        {
+          code: "U19GE702",
+          name: "Professional Elective - Professional readiness for Innovation, Employability and Entrepreneurship",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19IT702",
+          name: "Cloud computing Laboratory",
+          credits: 2,
+        },
+        {
+          code: "U19IT703",
+          name: "Mini Project",
+          credits: 2,
+        },
+      ],
+    },
   },
   {
     id: "EEE",
@@ -1488,6 +1532,60 @@ export const departments_data = [
           code: "U19GE602",
           name: "Professional Development Skills",
           credits: 1,
+        },
+      ],
+    },
+    sem7: {
+      subjects: [
+        {
+          code: "U19GE701",
+          name: "Professional Ethics and Human Values",
+          credits: 3,
+        },
+        {
+          code: "U19CE702",
+          name: "Construction Engineering Management",
+          credits: 3,
+        },
+        {
+          code: "U19CE703",
+          name: "Earthquake Resistant Structures",
+          credits: 3,
+        },
+        {
+          code: "U19CE922",
+          name: "Professional Elective - Bridge Engineering",
+          credits: 3,
+        },
+        {
+          code: "U19CE924",
+          name: "Professional Elective - Prestressed Concrete Structures",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19CE704",
+          name: "Estimation and quantity surveying",
+          credits: 2,
+        },
+        {
+          code: "U19CE705",
+          name: "Design Project",
+          credits: 2,
+        },
+        {
+          code: "U19CE706",
+          name: "Internship",
+          credits: 2,
+        },
+        {
+          code: "U19CE707",
+          name: "Industrial Lecture",
+          credits: 0,
         },
       ],
     },
@@ -2674,6 +2772,50 @@ export const departments_data = [
           code: "U19MC606",
           name: "Mini Project-II",
           credits: 1,
+        },
+      ],
+    },
+    sem7: {
+      subjects: [
+        {
+          code: "U19GE701",
+          name: "Professional Ethics and Human Values",
+          credits: 3,
+        },
+        {
+          code: "U19MC701",
+          name: "Total Quality Management",
+          credits: 3,
+        },
+        {
+          code: "U19MC702",
+          name: "Robot Programming and Applications",
+          credits: 3,
+        },
+        {
+          code: "U19MC908",
+          name: "Professional Elective - Virtual Instrumentation",
+          credits: 3,
+        },
+        {
+          code: "U19MC909",
+          name: "Professional Elective - Agriculture Automation",
+          credits: 3,
+        },
+        {
+          code: "OE",
+          name: "Open Elective",
+          credits: 3,
+        },
+        {
+          code: "U19MC703",
+          name: "Robotics Laboratory",
+          credits: 1.5,
+        },
+        {
+          code: "U19MC704",
+          name: "Mini Project-III",
+          credits: 1.5,
         },
       ],
     },
